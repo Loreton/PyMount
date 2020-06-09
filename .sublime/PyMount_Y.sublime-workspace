@@ -1,0 +1,1623 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"stri",
+				"strip_field"
+			],
+			[
+				"remo",
+				"remove_empty"
+			],
+			[
+				"devi",
+				"device_name〔variable〕"
+			],
+			[
+				"prj",
+				"prj_name〔variable〕"
+			],
+			[
+				"base",
+				"base_dir"
+			],
+			[
+				"COMM",
+				"COMMIT_0"
+			],
+			[
+				"mount",
+				"mountpoint"
+			],
+			[
+				"file",
+				"filename〔argument〕"
+			],
+			[
+				"ba",
+				"baseConfig"
+			],
+			[
+				"f",
+				"fEXECUTE"
+			],
+			[
+				"inp",
+				"inpArgs〔variable〕"
+			],
+			[
+				"set",
+				"setLogger"
+			],
+			[
+				"Ln",
+				"LnLogger"
+			],
+			[
+				"LnL",
+				"LnLib"
+			],
+			[
+				"colo",
+				"color_name〔argument〕"
+			],
+			[
+				"get",
+				"get_colored_text〔function〕"
+			],
+			[
+				"common",
+				"common_options"
+			],
+			[
+				"ski",
+				"skip_field〔argument〕"
+			],
+			[
+				"_",
+				"_query〔variable〕"
+			],
+			[
+				"singl",
+				"single_line"
+			],
+			[
+				"rege",
+				"regex_OR〔function〕"
+			],
+			[
+				"book",
+				"bookid_list〔variable〕"
+			],
+			[
+				"max",
+				"maxRec"
+			],
+			[
+				"boo",
+				"book_list〔argument〕"
+			],
+			[
+				"contetn",
+				"content_word"
+			],
+			[
+				"_word",
+				"_word2〔variable〕"
+			],
+			[
+				"recor",
+				"records〔variable〕"
+			],
+			[
+				"book_",
+				"book_list〔variable〕"
+			],
+			[
+				"menu",
+				"menu_data〔function〕"
+			],
+			[
+				"near",
+				"near_str"
+			],
+			[
+				"near_",
+				"near_word"
+			],
+			[
+				"new",
+				"near_word"
+			],
+			[
+				"occu",
+				"occurrencies〔variable〕"
+			],
+			[
+				"conte",
+				"content"
+			],
+			[
+				"__",
+				"__name__ == '__main__':〔variable〕"
+			],
+			[
+				"pa",
+				"pattern〔variable〕"
+			],
+			[
+				"_f",
+				"_from〔variable〕"
+			],
+			[
+				"_my",
+				"_my_query〔variable〕"
+			],
+			[
+				"my_",
+				"my_query〔variable〕"
+			],
+			[
+				"_s",
+				"_Field_direct_search"
+			],
+			[
+				"upda",
+				"updateField"
+			],
+			[
+				"set_",
+				"set_prompt"
+			],
+			[
+				"dis_",
+				"dis_line〔variable〕"
+			],
+			[
+				"_displayResults_",
+				"_displayResults_WORD_ORDER"
+			],
+			[
+				"word_",
+				"word_list〔variable〕"
+			],
+			[
+				"fie",
+				"fields〔argument〕"
+			],
+			[
+				"in",
+				"inpArgs"
+			],
+			[
+				"no",
+				"no_title〔variable〕"
+			],
+			[
+				"rea",
+				"read_range_records"
+			],
+			[
+				"indexed_",
+				"indexed_fields"
+			],
+			[
+				"fl",
+				"fld_name〔variable〕"
+			],
+			[
+				"ar",
+				"args"
+			],
+			[
+				"_d",
+				"_dynamic"
+			],
+			[
+				"index",
+				"indexed_books"
+			],
+			[
+				"valid",
+				"validKeys"
+			],
+			[
+				"vali",
+				"validKeys"
+			],
+			[
+				"resu",
+				"result2〔variable〕"
+			],
+			[
+				"force",
+				"force_indexing"
+			],
+			[
+				"p",
+				"pprint〔function〕"
+			],
+			[
+				"fi",
+				"field"
+			],
+			[
+				"author",
+				"author_rev"
+			],
+			[
+				"resul",
+				"result_data"
+			],
+			[
+				"fiel",
+				"fields"
+			],
+			[
+				"is",
+				"isinstance〔function〕"
+			],
+			[
+				"fld",
+				"fields"
+			],
+			[
+				"pdb",
+				"pdb;pdb.set_trace"
+			],
+			[
+				"cur_",
+				"cur_value〔variable〕"
+			],
+			[
+				"ind",
+				"indexed"
+			],
+			[
+				"ebbo",
+				"ebook_list〔variable〕"
+			],
+			[
+				"eboo",
+				"ebook_list〔variable〕"
+			],
+			[
+				"fil",
+				"filter〔variable〕"
+			],
+			[
+				"field",
+				"field_name"
+			],
+			[
+				"word",
+				"words_to_discard〔variable〕"
+			],
+			[
+				"cha",
+				"chars_to_discard〔variable〕"
+			],
+			[
+				"colle",
+				"collection_name"
+			],
+			[
+				"coll",
+				"collection_name〔argument〕"
+			],
+			[
+				"_coll",
+				"_collections〔variable〕"
+			],
+			[
+				"eBoo",
+				"eBooks_DB〔variable〕"
+			],
+			[
+				"Mongo",
+				"MongoCollection〔module〕"
+			],
+			[
+				"this",
+				"this_book〔variable〕"
+			],
+			[
+				"ignore",
+				"ignore_case"
+			],
+			[
+				"my",
+				"myquery〔variable〕"
+			],
+			[
+				"start",
+				"startswith"
+			],
+			[
+				"path",
+				"path_len"
+			],
+			[
+				"process_",
+				"process_UserProfile"
+			],
+			[
+				"press",
+				"presscontrolPower"
+			],
+			[
+				"ph",
+				"phase_interval"
+			],
+			[
+				"bu",
+				"buzzer_ON"
+			],
+			[
+				"buzze",
+				"buzzer_duration"
+			],
+			[
+				"buzz",
+				"buzzer_frequency"
+			],
+			[
+				"fre",
+				"buzzer_frequency"
+			],
+			[
+				"phase",
+				"isPhaseTime"
+			],
+			[
+				"fP",
+				"fPrint_BEEP"
+			],
+			[
+				"BU",
+				"BUZZER_DURATION"
+			],
+			[
+				"nex",
+				"next_phase_time"
+			],
+			[
+				"ho",
+				"hornState"
+			],
+			[
+				"PH",
+				"PHASE_INTERVAL"
+			],
+			[
+				"PHA",
+				"PHASE_ALARM_INTERVAL"
+			],
+			[
+				"buz",
+				"buzzer_frequency"
+			],
+			[
+				"phas",
+				"phase_ON"
+			],
+			[
+				"buzzer",
+				"buzzer_interval"
+			],
+			[
+				"inter",
+				"buzzer_interval"
+			],
+			[
+				"prin",
+				"print6Str"
+			],
+			[
+				"BUZZ",
+				"BUZZER_FREQUENCY"
+			],
+			[
+				"freq",
+				"frequency"
+			],
+			[
+				"check",
+				"checkPassiveBuzzer_New"
+			],
+			[
+				"fPrint_",
+				"fPrint_BEEP"
+			],
+			[
+				"pre",
+				"previousHornTime"
+			],
+			[
+				"hor",
+				"hornState"
+			],
+			[
+				"led",
+				"led_interval"
+			],
+			[
+				"led_",
+				"led_duration"
+			],
+			[
+				"HORN",
+				"HORN_PERIOD_PUMP_OFF"
+			],
+			[
+				"horn",
+				"horn_ON_time"
+			],
+			[
+				"fD",
+				"fDEBUG_BEEP"
+			],
+			[
+				"che",
+				"checkPumpState"
+			],
+			[
+				"pres",
+				"pressControl"
+			],
+			[
+				"digit",
+				"digitalWrite"
+			],
+			[
+				"pri",
+				"print"
+			],
+			[
+				"next",
+				"next_beep_time"
+			],
+			[
+				"pump",
+				"pumpStatus"
+			],
+			[
+				"pup",
+				"pumpStatus"
+			],
+			[
+				"pum",
+				"pumpStatus"
+			],
+			[
+				"inp_P",
+				"inp_PumpState"
+			],
+			[
+				"bee",
+				"buzzer_period"
+			],
+			[
+				"LE",
+				"LED_PERIOD_DEFAULT"
+			],
+			[
+				"Bu",
+				"BusserFlag"
+			],
+			[
+				"PC",
+				"PC_Pulsante"
+			],
+			[
+				"E",
+				"ElettroValvola"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Y/GIT-REPO/@Python/PyMount/Source/ListDevices.py",
+			"settings":
+			{
+				"buffer_size": 5655,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Y/GIT-REPO/@Python/PyMount/LnLib/LnPyUtils.py",
+			"settings":
+			{
+				"buffer_size": 13828,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Y/GIT-REPO/@Python/PyMount/__main__.py",
+			"settings":
+			{
+				"buffer_size": 2946,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"comp",
+				"Compare with..."
+			],
+			[
+				"ren",
+				"File: Rename"
+			],
+			[
+				"dupli",
+				"File: Duplicate"
+			],
+			[
+				"compa",
+				"Compare with..."
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"rename",
+				"Rename File"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"rene",
+				"Rename File"
+			],
+			[
+				"renam",
+				"File: Rename"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"markdo",
+				"Preferences: MarkdownEditing Settings – Default"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"del",
+				"File: Delete"
+			],
+			[
+				"inc",
+				"Increment Selection"
+			],
+			[
+				"in",
+				"Increment Selection"
+			],
+			[
+				"incre",
+				"Increment Selection"
+			],
+			[
+				"i",
+				"Increment Selection"
+			],
+			[
+				"dele",
+				"File: Delete"
+			],
+			[
+				"re",
+				"File: Rename"
+			],
+			[
+				"json",
+				"Pretty JSON: Format and Sort JSON"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"syn",
+				"Side Bar: Enable Syncing"
+			],
+			[
+				"color hi",
+				"Color Scheme Editor: Goto next matching scope"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"them",
+				"UI: Select Theme"
+			],
+			[
+				"pvr",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"colo",
+				"UI: Select Color Scheme"
+			],
+			[
+				"box",
+				"Boxy Theme: Configuration"
+			],
+			[
+				"boxy",
+				"Boxy Theme: Preferences"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"color",
+				"Color Scheme Editor: Goto next matching scope"
+			],
+			[
+				"vrc",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"case",
+				"Convert Case: Title Case"
+			],
+			[
+				"git",
+				"GitHub: Open Starred Gist in Editor"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"jnj",
+				"Set Syntax: Jinja2"
+			],
+			[
+				"anaco",
+				"Anaconda: Vagrant Status"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"anaconda",
+				"Anaconda: Goto object definition"
+			],
+			[
+				"anaconda sho",
+				"Anaconda: Show error list"
+			],
+			[
+				"insal",
+				"Package Control: Install Package"
+			],
+			[
+				"instak",
+				"Package Control: Install Package"
+			],
+			[
+				"ana",
+				"Anaconda: McCabe complexity check"
+			],
+			[
+				"anaconda sh",
+				"Anaconda: Show error list"
+			],
+			[
+				"goto",
+				"Anaconda: Goto object definition"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"de",
+				"File: Delete"
+			],
+			[
+				"todo",
+				"TodoReview: Project Files"
+			],
+			[
+				"incr",
+				"Increment Selection"
+			],
+			[
+				"sftp",
+				"SFTP: Edit Remote Mapping…"
+			],
+			[
+				"sft",
+				"SFTP: Browse Server…"
+			],
+			[
+				"sort",
+				"SortBy: Alphabetically"
+			],
+			[
+				"tod",
+				"TodoReview: Open Files"
+			],
+			[
+				"match",
+				"BracketHighlighter: Find Matching Offscreen Bracket"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 249.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Y/GIT-REPO/@Python/PyMount",
+		"/Y/GIT-REPO/@Python/PyMount/LnLib",
+		"/Y/GIT-REPO/@Python/PyMount/Source",
+		"/Y/GIT-REPO/@Python/PyMount/Source/Main"
+	],
+	"file_history":
+	[
+		"/K/Filu/LnDisk/GIT-REPO/@Python/eBooks/.vscode/launch.json",
+		"/K/Filu/LnDisk/LnFree/Editors/SublimeText_3/Data/Packages/User/SFTP.errors.log",
+		"/K/Filu/LnDisk/GIT-REPO/@Python/DDNS/Source/Main/ParseInput.py",
+		"/Y/home/pi/GIT-REPO/@Python/PyMount/Source/ParseInput.py",
+		"/Y/home/pi/GIT-REPO/@Python/PyMount/__main__.py",
+		"/Y/home/pi/GIT-REPO/@Python/PyMount/Source/ReadConfigurationFile.py",
+		"/K/Filu/LnDisk/GIT-REPO/@Python/DDNS/__main__.py",
+		"/Y/home/pi/GIT-REPO/gitUtils/ln_commit",
+		"/K/Filu/LnDisk/GIT-REPO/gitUtils/ln_commit",
+		"/K/Filu/LnDisk/LnStart/LnToDo.ini",
+		"/Y/home/pi/GIT-REPO/@Python/PyMount/.git/config",
+		"/K/Filu/LnDisk/GIT-REPO/gitUtils/.git/config",
+		"/Y/home/pi/GIT-REPO/gitUtils/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp44340/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/@Python/PyMount/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp25865/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/@Python/LnMount/LnLib/__init__.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp37891/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/Source/ReadConfigurationFile.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp48586/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/conf/LnMount.yml",
+		"/C/Users/Loreto/AppData/Local/Temp/scp06120/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp31581/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/__main__.py",
+		"/K/Filu/LnDisk/GIT-REPO/LnPythonLib/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp49889/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.conf",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/__main__.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp45132/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/conf/LnMount.conf",
+		"/C/Users/Loreto/AppData/Local/Temp/scp34051/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/Source/Main/LnMount_V2.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp34683/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/Source/ParseInput.py",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Win-sshFS/Installation.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp45729/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp47009/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.conf",
+		"/C/Users/Loreto/AppData/Local/Temp/scp19304/HOME-LnPi23-LnPi23-rm-pina.duckdns.org/home/pi/PiProd/shProc/LnMount.sh",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/System.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp12933/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp55584/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/.ssh/authorized_keys",
+		"/C/Users/Loreto/AppData/Local/Temp/scp04041/HOME-LnPi23-LnPi23-rm-pina.duckdns.org/home/pi/.ssh/authorized_keys",
+		"/C/Users/Loreto/AppData/Local/Temp/scp55043/Varie-Direct-Always-Data---SCP/home/loreton/.ssh/authorized_keys",
+		"/C/Users/Loreto/AppData/Local/Temp/scp58143/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/PiProd/pyProc/LnMount_V2.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/ParseInput.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp52741/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/GIT-REPO/Python/Mount/__main__.py",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Migrate Jessie-Stretch.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp52089/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/GIT-REPO/Python/Mount/Source/__init__.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp36752/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/PiProd/pyProc/LnMount_V2.py",
+		"/K/Filu/LnDisk/LnFree/Network/Tunnel/cntlm-0.92.3/cntlm.cmd",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Update.txt",
+		"/K/Filu/LnDisk/LnFree/Network/Tunnel/cntlm-0.92.3/cntlm_LN.ini",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/DLNA.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp30662/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/pyProc/LnMount_V2.py",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Samba.txt",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/sshd.txt",
+		"/K/Filu/LnDisk/LnPi/LnPi31_BACKUP_2019-05/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp53122/HOME-LnPi3B1-LnPi31b-via-Lnpi23-64032/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/K/Filu/LnDisk/GIT-REPO/Scripts/DOS/SSH-Tunnel.cmd",
+		"/C/Users/Loreto/AppData/Local/Temp/scp41785/HOME-Windows-PC-HP-Casetta/home/loreto/.Loreto",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/sudoers.txt",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/__init__.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/conf/DDNS.yml",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/Update.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/__main__.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/ParseInput.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/LnLib/AES_EncDecrypt.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/LnLib/__init__.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/Encrypt.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/Decrypt.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/.gitignore",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/LnLib/LnMonkeyFunctions.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/log/DDNS_encrypt.log",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/conf/DDNS.yml",
+		"/K/Filu/LnDisk/GIT-REPO/LnModules/LnPyUtils/LnPyUtils.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/ReadConfigurationFile.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/conf/DDNS_config.ini",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/LnLib/__init__.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/Main/ReadConfigurationFile.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS_OLD/Source/Setup/setProjectEnv.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS_OLD/__main__.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp15927/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/GIT-REPO/Python/DDNS/__main__.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/Python/DDNS/Source/ParseInput/Options/DDNS_input_options.py",
+		"/K/Filu/LnDisk/GIT-REPO/eBooks/Source/__init__.py",
+		"/K/Filu/LnDisk/GIT-REPO/eBooks/__main__.py",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Python/cryptodome.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp37012/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/DDNS/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp59792/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/.Loreto",
+		"/K/Filu/LnDisk/GIT-REPO/gitUtils/git_commit",
+		"/C/Users/Loreto/AppData/Local/Temp/scp08948/HOME-LnPi3B1-LnPi3B1-wlan0/home/pi/GIT-REPO/Python/DDNS/LnPyLib/Mail/Mail.py",
+		"/K/Filu/LnDisk/GIT-REPO/LnModules/LnMail/Mail.py",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/.git/config",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Monitoring.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp39325/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/K/Filu/LnDisk/GIT-REPO/eBooks/.git/config",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/IPV6.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp38967/Varie-Direct-Always-Data---SCP/home/loreton/testSSH",
+		"/C/Users/Loreto/AppData/Local/Temp/scp38250/Varie-Direct-Always-Data---SCP/home/loreton/windows_64",
+		"/C/Users/Loreto/AppData/Local/Temp/scp33756/Varie-Direct-Always-Data---SCP/home/loreton/myIP_LnPi23",
+		"/C/Users/Loreto/AppData/Local/Temp/scp37852/Varie-Direct-Always-Data---SCP/home/loreton/loreto",
+		"/C/Users/Loreto/AppData/Local/Temp/scp37122/Varie-Direct-Always-Data---SCP/home/loreton/eth0.txt",
+		"/K/Filu/LnDisk/Technical-DOC/Idraulica/Pompe idrauliche/Ribiland PRPVC751/LnReadMe.txt",
+		"/K/Filu/LnDisk/Technical-DOC/Idraulica/Pompe idrauliche/Ribiland PRPVC751-43F/LnReadMe.txt",
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/Launch.sh",
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/config/googleDriveSync.yml",
+		"/C/Users/Loreto/AppData/Local/Temp/scp27337/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/myIP",
+		"/K/Filu/LnDisk/GIT-REPO/LnPythonLib/Mail/Mail.py",
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/Source/Google/Ln_Upload.py",
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/Source/Google/GDrive.py",
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/__main__.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp27901/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/DDNS_config.ini",
+		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/LnPyLib/Mail/Mail.py",
+		"/K/Filu/LnDisk/GIT-REPO/LnPythonLib/Mail/Mail_01.py",
+		"/C/Users/Loreto/AppData/Local/Temp/scp26019/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/lnpi3b1_persistentData.csv",
+		"/C/Users/Loreto/AppData/Local/Temp/scp26709/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/casetta_persistentData.csv",
+		"/C/Users/Loreto/AppData/Local/Temp/scp40802/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp58736/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp56221/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.conf",
+		"/C/Users/Loreto/AppData/Local/Temp/scp51924/HOME-LnPi3B1-LnPi3B1-eth0/etc/network/interfaces",
+		"/C/Users/Loreto/AppData/Local/Temp/scp05630/HOME-LnPi3B1-LnPi3B1-eth0/etc/dhcpcd.conf",
+		"/C/Users/Loreto/AppData/Local/Temp/scp15816/HOME-LnPi3B1-LnPi3B1-eth0/etc/wpa_supplicant/wpa_supplicant.conf",
+		"/C/Users/Loreto/AppData/Local/Temp/scp40577/HOME-LnPi3B1-LnPi3B1-eth0/etc/samba/smb.conf",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Network.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp07820/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/_under_test/etc/network/rtTable_mptcp_down",
+		"/C/Users/Loreto/AppData/Local/Temp/scp52709/HOME-LnPi3B1-LnPi3B1-eth0/etc/network/if-pre-up.d/wpasupplicant",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/UBUNTU Installation.txt",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Python/eBooks.txt",
+		"/K/Filu/LnDisk/Loreto/BdI/CSR/Adeguata Verifica 2020/Loreto - Carta Identità 11-11-2024.pdf",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/visudo.txt",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/sshd/sshd.txt",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/Main/eBooks.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/__main__.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/LnLib/LnRegex.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/LnLib/LnLogger.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/Main/LnMongoCollection_V02.py",
+		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/config/eBooks.yml"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 169.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"lnLogger",
+			"maketrans",
+			"gv.DEVICES",
+			"DEVICES",
+			"DEVICE",
+			"wrLog",
+			"getBlockID",
+			"yaml.load",
+			"yaml",
+			"fCONSOLE",
+			"ZipFile",
+			"my_projects",
+			"reqTAGS",
+			"processDir",
+			"checkInput",
+			"dirs",
+			"checkInput",
+			"reqALL",
+			"checkInput",
+			"processDir",
+			"my_projects",
+			"readingConfigFile",
+			"reqUUID",
+			"baseConfig",
+			"fat",
+			"getMountedFS",
+			"UUID",
+			"UUI",
+			"gitUtils",
+			"createReverseTunnel",
+			"createTunnel",
+			"pdataFile",
+			"choi",
+			"_getCipher",
+			"_LnDecryptHexFormat",
+			"inpArgs",
+			"_this_path",
+			"ELAPSED_TIME",
+			"fPRINT",
+			"json",
+			"processYamlData",
+			"LoadYamlFile",
+			"Ln.",
+			"sys.path.insert",
+			"c_white",
+			", color_name=help_color",
+			", color_name=help_color)",
+			"get_colored_text",
+			"check_file",
+			"Ln.coloredHelp(",
+			"esegui",
+			"comme",
+			"/tmp/myIP",
+			"ServerMail",
+			"progressFileSize",
+			"_progressFileSize",
+			"fPROGRESS",
+			"size",
+			"readingConfigFile",
+			"verifyDiskByUUID",
+			"LocDir",
+			"updatin",
+			"TIMEOUT",
+			"psk=\"",
+			"move_file",
+			"renam",
+			"alread",
+			"_displayResults",
+			"text_near_occurrencies",
+			"near",
+			"_displayResults",
+			"RegEx",
+			"regex",
+			"RegEx",
+			"text_near_occurrencies",
+			"_printLog_New",
+			"sys.exit",
+			"FindIter",
+			"search_two_near_words",
+			"FindIter",
+			"RegEx",
+			"rx.regex_",
+			"Search",
+			"fWORD",
+			"findall",
+			"FindAll",
+			"regex_AND3",
+			"Search",
+			"FindIter",
+			"regex_AND3",
+			"FindIter",
+			"time",
+			"regex_AND3",
+			"strillo",
+			"groupt",
+			"regex",
+			"and",
+			"tim",
+			"_collection.find({})",
+			"get_next2",
+			"set_search_regex",
+			"title",
+			"set_wuery",
+			"_filter = {'_id': word}",
+			"rec = self._Dictionary.get_record(_filter)",
+			"books",
+			"Books",
+			"books",
+			"search_string",
+			"_dictionary_search",
+			"text_near_occurrencies",
+			"search_perf",
+			"field_search",
+			"dict_to_json",
+			"_ePub_direct_search",
+			"set(",
+			"dupli",
+			"(?=.*?\\b{}\\b)",
+			"(?=.*?\\{}\\b)",
+			"compile",
+			"my_query",
+			"regex_near_search",
+			"_collection",
+			"_minmax",
+			"prev_book_id",
+			"set(",
+			"&",
+			"get_record"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Y/GIT-REPO/@Python/PyMount/Source/ListDevices.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2737,
+								2764
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"function_name_status_row": 77,
+							"incomplete_sync": null,
+							"origPos":
+							[
+								0.0,
+								1275.0
+							],
+							"remote_loading": false,
+							"syncScroll": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1275.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Y/GIT-REPO/@Python/PyMount/LnLib/LnPyUtils.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13828,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11693,
+								11693
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										11698,
+										11699
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										11685,
+										11686
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"function_name_status_row": 354,
+							"incomplete_sync": null,
+							"origPos":
+							[
+								0.0,
+								6755.0
+							],
+							"remote_loading": false,
+							"syncScroll": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6755.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Y/GIT-REPO/@Python/PyMount/__main__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								554,
+								554
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"function_name_status_row": 21,
+							"incomplete_sync": null,
+							"origPos":
+							[
+								0.0,
+								0.0
+							],
+							"remote_loading": false,
+							"syncScroll": false,
+							"synced": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 59.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 346.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.help":
+	{
+		"height": 132.0
+	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 144.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 130.0
+	},
+	"output.stino_build_panel":
+	{
+		"height": 0.0
+	},
+	"output.stino_panel":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "PyMount_Y.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 139.0,
+		"last_filter": "vi",
+		"selected_items":
+		[
+			[
+				"vi",
+				"viewitems"
+			],
+			[
+				"",
+				"__getitem__"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

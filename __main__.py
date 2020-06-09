@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 05-06-2020 13.40.08
+# Version ......: 06-06-2020 18.13.45
 #
 # #############################################
 
@@ -16,9 +16,10 @@ import pdb
 
 from Source.ReadConfigurationFile import readConfigFile
 from Source.ParseInput import parseInput
-# import LnLib as Ln
+import LnLib as Ln
 # Ln=Prj.LnLib          # --- se faccio import all'interno di Source/__init__.py
 
+from Source.ListDevices import getBlockID
 
 ######################################
 # sample call:
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     # -------------------------------
     # - parse input parameters
     # -------------------------------
-    inpArgs=parseInput()
+    inpArgs=parseInput(Ln.Color())
     # fCONSOLE=inpArgs.log_console
 
     # -------------------------------
@@ -49,13 +50,13 @@ if __name__ == '__main__':
         log_file = os.path.abspath(os.path.join(log_dir, '{prj_name}_{inpArgs.action}.log'.format(**locals())))
     else:
         log_file = None
-    lnLogger = Ln.setLogger(filename=log_file, console=fCONSOLE, debug_level=3, log_modules=inpArgs.log_modules, color=Ln.Color() )
+    lnLogger = Ln.setLogger(filename=log_file, console=inpArgs.log_console, debug_level=3, log_modules=inpArgs.log_modules, color=Ln.Color() )
 
     lnLogger.info('input arguments', vars(inpArgs))
     lnLogger.info('configuration data', _data)
     Path.LnSet(lnLogger)
 
-    C    = Ln.Color()
+    C = Ln.Color()
     if inpArgs.debug:
         C.setColor(color=C._cyanH)
         print('     Input arguments:')
@@ -80,7 +81,7 @@ if __name__ == '__main__':
     gv.config   = config
     # -----------------------------------------------
 
-
+    getBlockID(gv)
 
     if 'mount' in inpArgs.action:
         mount(gv)

@@ -1,7 +1,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 05-06-2020 10.44.46
+# Version ......: 05-06-2020 17.21.34
 #
 # #############################################
 
@@ -20,24 +20,27 @@ import  yaml
 #######################################################
 def readConfigFile(filename=None, fPRINT=False):
 
+    # check if I'm inside a ZIP file or directory
     _this_path=Path(sys.argv[0]).resolve()
     script_path=_this_path.parent # ... then up one level
 
     if _this_path.suffix == '.zip':
-        _I_AM_ZIP = True
-        prj_name    = _this_path.stem # get name of zip file
+        _I_AM_ZIP    = True
+        prj_name     = _this_path.stem # get name of zip file
         zip_filename = _this_path
 
     else:
         _I_AM_ZIP = False
         prj_name  = script_path.name # get name of path
 
-    if filename:
-        prj_name=filename
+    if not filename: # if not filename is passed
+        filename=prj_name
+
+
     yaml_filenames = [
-            '{0}.yml'.format(prj_name),
-            'conf/{0}.yml'.format(prj_name),
-            'config/{0}.yml'.format(prj_name),
+            '{0}.yml'.format(filename),
+            'conf/{0}.yml'.format(filename),
+            'config/{0}.yml'.format(filename),
         ]
 
     content = None
@@ -76,11 +79,11 @@ def readConfigFile(filename=None, fPRINT=False):
             rows.append(line)
 
         result = '\n'.join(rows)
-        # content = yaml.safe_load(result) # non usa i constructors
-        content = yaml.load(result)
+        content = yaml.safe_load(result) # non usa i constructors
+        # content = yaml.load(result)
 
     else:
-        print ('configuration file {0} NOT FOUND'.format(prj_name))
+        print ('configuration file {0} NOT FOUND'.format(filename))
         sys.exit(1)
     yaml_config_file = yaml_filename
     _ret = {}
