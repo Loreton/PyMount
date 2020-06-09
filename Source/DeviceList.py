@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 09-06-2020 17.17.35
+# Version ......: 09-06-2020 19.21.55
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -69,6 +69,18 @@ def DeviceList(gv, reqUUID=None):
                 ptr['partuuid']=value
             if name=='ID_PART_ENTRY_SIZE':
                 ptr['size']=bytes2H(int(value))
+
+
+    mounted = subprocess.check_output('/bin/mount', stderr=subprocess.STDOUT)  # ritorna <class 'bytes'>
+    mounted = mounted.decode('utf-8').split('\n')       # converti in STRing/LIST
+
+
+    for item in mounted:
+        if not item.strip(): continue
+        dev_name, _, mount_point,_ = item.split(' ', 3)
+        for device in DEVICES.keys():
+            if device==dev_name:
+                DEVICES[device]['mount_point']= mount_point
 
 
     logger.info('DEVICES', json.dumps(DEVICES, indent=4, sort_keys=True))

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 09-06-2020 19.30.30
+# Version ......: 09-06-2020 19.29.21
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -10,10 +10,25 @@ import subprocess
 # ###########################################################################
 # #
 # ###########################################################################
-def MountDevice(gv, req_device):
+def CheckDevices(gv, device_list, req_device=None, req_partuuid=None, req_uuid=None):
     logger=gv.lnLogger
     C=gv.Color
 
+
+    device_found={}
+    for device, data in device_list.items():
+        if (req_device) and (device==req_device):
+            device_found[device]=device_list.pop(device)
+            break
+        elif (req_partuuid) and ('partuuid' in data) and (data.partuuid==req_partuuid):
+            device_found[device]=device_list.pop(device)
+            break
+        elif (req_uuid) and ('uuid' in data) and (data.uuid==req_uuid):
+            device_found[device]=device_list.pop(device)
+            break
+
+    if device_found:
+        device_list=device_found
 
     for device, data in device_list.items():
         C.yellowH(text=device, tab=4)
@@ -25,5 +40,4 @@ def MountDevice(gv, req_device):
         if 'mount_point' in data:    C.magentaH(text='{:12}: {}'.format('mount_point', data.mount_point), tab=8)
         print()
 
-    if not device_found:
-        print()
+    return device_found
