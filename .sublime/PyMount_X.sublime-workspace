@@ -519,33 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/Y/GIT-REPO/@Python/PyMount/Source/ListDevices.py",
-			"settings":
-			{
-				"buffer_size": 5655,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Y/GIT-REPO/@Python/PyMount/LnLib/LnPyUtils.py",
-			"settings":
-			{
-				"buffer_size": 13828,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Y/GIT-REPO/@Python/PyMount/__main__.py",
-			"settings":
-			{
-				"buffer_size": 2946,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -835,13 +808,40 @@
 	},
 	"expanded_folders":
 	[
-		"/Y/GIT-REPO/@Python/PyMount",
-		"/Y/GIT-REPO/@Python/PyMount/LnLib",
-		"/Y/GIT-REPO/@Python/PyMount/Source",
-		"/Y/GIT-REPO/@Python/PyMount/Source/Main"
+		"/X/GIT-REPO/@Python/PyMount"
 	],
 	"file_history":
 	[
+		"/K/Filu/LnDisk/LnStart/LnToDo.ini",
+		"/K/Filu/LnDisk/GIT-REPO/homeLoreto/.ssh/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp12154/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/GIT-REPO/@Python/LnPythonLib/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp33254/HOME-LnPi23-192.168.1.23/home/pi/GIT-REPO/@Python/LnPythonLib/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp00770/HOME-LnPi23-192.168.1.23/home/pi/GIT-REPO/@Python/PyMount/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp26241/HOME-LnPi23-192.168.1.23/home/pi/GIT-REPO/gitUtils/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp30756/HOME-LnPi23-192.168.1.23/home/pi/GIT-REPO/gitUtils/ln_commit",
+		"/C/Users/Loreto/AppData/Local/Temp/scp20927/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/GIT-REPO/gitUtils/ln_commit",
+		"/K/Filu/LnDisk/GIT-REPO/@Python/LnPythonLib/.git/config",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Python/dotmap.txt",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Python/yaml.txt",
+		"/C/Users/Loreto/AppData/Local/Temp/scp00137/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/GIT-REPO/@Python/PyMount/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp28789/HOME-LnPi23-192.168.1.23/home/pi/.Loreto",
+		"/C/Users/Loreto/AppData/Local/Temp/scp26417/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/GIT-REPO/gitUtils/.git/config",
+		"/C/Users/Loreto/AppData/Local/Temp/scp27009/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/.bashrc",
+		"/C/Users/Loreto/AppData/Local/Temp/scp28482/HOME-LnPi23-192.168.1.23/home/pi/.bashrc",
+		"/C/Users/Loreto/AppData/Local/Temp/scp27682/HOME-LnPi3B1-LnPi31b-via-steve-64032/home/pi/.Loreto",
+		"/K/Filu/LnDisk/GIT-REPO/gitUtils/ln_commit",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Win-sshFS/Installation.txt",
+		"/K/Filu/LnDisk/LnPi/LnPi22_BACKUP/etc/ssh/sshd_config",
+		"/K/Filu/LnDisk/LnPi/LnPi31_BACKUP_2019-05/home/pi/.Loreto",
+		"/C/Users/Loreto/AppData/Local/Temp/scp41740/HOME-LnPi3B1-LnPi31b-via-88.149.198.156-60022/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/C/Users/Loreto/AppData/Local/Temp/scp20519/HOME-LnPi3B1-LnPi31b-via-rm-pina.duckdns.org-64032/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
+		"/K/Filu/LnDisk/LnFree/Security/MyKeys/Loreto/Loreto_20190205/Loreto_20190205_OpenSSH.pub",
+		"/C/Users/Loreto/.ssh/known_hosts",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/SSHd-utostart.txt",
+		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/System.txt",
+		"/Y/GIT-REPO/@Python/PyMount/__main__.py",
+		"/Y/GIT-REPO/@Python/PyMount/LnLib/LnPyUtils.py",
+		"/Y/GIT-REPO/@Python/PyMount/Source/ListDevices.py",
 		"/K/Filu/LnDisk/GIT-REPO/@Python/eBooks/.vscode/launch.json",
 		"/K/Filu/LnDisk/LnFree/Editors/SublimeText_3/Data/Packages/User/SFTP.errors.log",
 		"/K/Filu/LnDisk/GIT-REPO/@Python/DDNS/Source/Main/ParseInput.py",
@@ -850,8 +850,6 @@
 		"/Y/home/pi/GIT-REPO/@Python/PyMount/Source/ReadConfigurationFile.py",
 		"/K/Filu/LnDisk/GIT-REPO/@Python/DDNS/__main__.py",
 		"/Y/home/pi/GIT-REPO/gitUtils/ln_commit",
-		"/K/Filu/LnDisk/GIT-REPO/gitUtils/ln_commit",
-		"/K/Filu/LnDisk/LnStart/LnToDo.ini",
 		"/Y/home/pi/GIT-REPO/@Python/PyMount/.git/config",
 		"/K/Filu/LnDisk/GIT-REPO/gitUtils/.git/config",
 		"/Y/home/pi/GIT-REPO/gitUtils/.git/config",
@@ -867,11 +865,9 @@
 		"/C/Users/Loreto/AppData/Local/Temp/scp45132/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/conf/LnMount.conf",
 		"/C/Users/Loreto/AppData/Local/Temp/scp34051/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/Source/Main/LnMount_V2.py",
 		"/C/Users/Loreto/AppData/Local/Temp/scp34683/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/GIT-REPO/Python/Mount/Source/ParseInput.py",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Win-sshFS/Installation.txt",
 		"/C/Users/Loreto/AppData/Local/Temp/scp45729/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.sh",
 		"/C/Users/Loreto/AppData/Local/Temp/scp47009/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.conf",
 		"/C/Users/Loreto/AppData/Local/Temp/scp19304/HOME-LnPi23-LnPi23-rm-pina.duckdns.org/home/pi/PiProd/shProc/LnMount.sh",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/System.txt",
 		"/C/Users/Loreto/AppData/Local/Temp/scp12933/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
 		"/C/Users/Loreto/AppData/Local/Temp/scp55584/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/.ssh/authorized_keys",
 		"/C/Users/Loreto/AppData/Local/Temp/scp04041/HOME-LnPi23-LnPi23-rm-pina.duckdns.org/home/pi/.ssh/authorized_keys",
@@ -943,44 +939,17 @@
 		"/K/Filu/LnDisk/GIT-REPO/LnPythonLib/Mail/Mail.py",
 		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/Source/Google/Ln_Upload.py",
 		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/Source/Google/GDrive.py",
-		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/__main__.py",
-		"/C/Users/Loreto/AppData/Local/Temp/scp27901/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/DDNS_config.ini",
-		"/K/Filu/LnDisk/GIT-REPO/Python/DDNS/LnPyLib/Mail/Mail.py",
-		"/K/Filu/LnDisk/GIT-REPO/LnPythonLib/Mail/Mail_01.py",
-		"/C/Users/Loreto/AppData/Local/Temp/scp26019/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/lnpi3b1_persistentData.csv",
-		"/C/Users/Loreto/AppData/Local/Temp/scp26709/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/DDNS/conf/casetta_persistentData.csv",
-		"/C/Users/Loreto/AppData/Local/Temp/scp40802/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/ssh_Reverse_tunnel.sh",
-		"/C/Users/Loreto/AppData/Local/Temp/scp58736/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.sh",
-		"/C/Users/Loreto/AppData/Local/Temp/scp56221/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/shProc/LnMount.conf",
-		"/C/Users/Loreto/AppData/Local/Temp/scp51924/HOME-LnPi3B1-LnPi3B1-eth0/etc/network/interfaces",
-		"/C/Users/Loreto/AppData/Local/Temp/scp05630/HOME-LnPi3B1-LnPi3B1-eth0/etc/dhcpcd.conf",
-		"/C/Users/Loreto/AppData/Local/Temp/scp15816/HOME-LnPi3B1-LnPi3B1-eth0/etc/wpa_supplicant/wpa_supplicant.conf",
-		"/C/Users/Loreto/AppData/Local/Temp/scp40577/HOME-LnPi3B1-LnPi3B1-eth0/etc/samba/smb.conf",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/RaspBerry/Network.txt",
-		"/C/Users/Loreto/AppData/Local/Temp/scp07820/HOME-LnPi3B1-LnPi3B1-eth0/home/pi/PiProd/_under_test/etc/network/rtTable_mptcp_down",
-		"/C/Users/Loreto/AppData/Local/Temp/scp52709/HOME-LnPi3B1-LnPi3B1-eth0/etc/network/if-pre-up.d/wpasupplicant",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/UBUNTU Installation.txt",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/Python/eBooks.txt",
-		"/K/Filu/LnDisk/Loreto/BdI/CSR/Adeguata Verifica 2020/Loreto - Carta Identità 11-11-2024.pdf",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/visudo.txt",
-		"/K/Filu/LnDisk/GIT-REPO/@LnDOC/WSL/sshd/sshd.txt",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/Main/eBooks.py",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/__main__.py",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/LnLib/LnRegex.py",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/LnLib/LnLogger.py",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/Source/Main/LnMongoCollection_V02.py",
-		"/X/mnt/k/Filu/LnDisk/GIT-REPO/eBooks/config/eBooks.yml"
+		"/K/Filu/LnDisk/GIT-REPO/googleDriveSync/__main__.py"
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
 		"height": 169.0,
 		"where_history":
 		[
-			""
 		]
 	},
 	"find_state":
@@ -988,134 +957,6 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"lnLogger",
-			"maketrans",
-			"gv.DEVICES",
-			"DEVICES",
-			"DEVICE",
-			"wrLog",
-			"getBlockID",
-			"yaml.load",
-			"yaml",
-			"fCONSOLE",
-			"ZipFile",
-			"my_projects",
-			"reqTAGS",
-			"processDir",
-			"checkInput",
-			"dirs",
-			"checkInput",
-			"reqALL",
-			"checkInput",
-			"processDir",
-			"my_projects",
-			"readingConfigFile",
-			"reqUUID",
-			"baseConfig",
-			"fat",
-			"getMountedFS",
-			"UUID",
-			"UUI",
-			"gitUtils",
-			"createReverseTunnel",
-			"createTunnel",
-			"pdataFile",
-			"choi",
-			"_getCipher",
-			"_LnDecryptHexFormat",
-			"inpArgs",
-			"_this_path",
-			"ELAPSED_TIME",
-			"fPRINT",
-			"json",
-			"processYamlData",
-			"LoadYamlFile",
-			"Ln.",
-			"sys.path.insert",
-			"c_white",
-			", color_name=help_color",
-			", color_name=help_color)",
-			"get_colored_text",
-			"check_file",
-			"Ln.coloredHelp(",
-			"esegui",
-			"comme",
-			"/tmp/myIP",
-			"ServerMail",
-			"progressFileSize",
-			"_progressFileSize",
-			"fPROGRESS",
-			"size",
-			"readingConfigFile",
-			"verifyDiskByUUID",
-			"LocDir",
-			"updatin",
-			"TIMEOUT",
-			"psk=\"",
-			"move_file",
-			"renam",
-			"alread",
-			"_displayResults",
-			"text_near_occurrencies",
-			"near",
-			"_displayResults",
-			"RegEx",
-			"regex",
-			"RegEx",
-			"text_near_occurrencies",
-			"_printLog_New",
-			"sys.exit",
-			"FindIter",
-			"search_two_near_words",
-			"FindIter",
-			"RegEx",
-			"rx.regex_",
-			"Search",
-			"fWORD",
-			"findall",
-			"FindAll",
-			"regex_AND3",
-			"Search",
-			"FindIter",
-			"regex_AND3",
-			"FindIter",
-			"time",
-			"regex_AND3",
-			"strillo",
-			"groupt",
-			"regex",
-			"and",
-			"tim",
-			"_collection.find({})",
-			"get_next2",
-			"set_search_regex",
-			"title",
-			"set_wuery",
-			"_filter = {'_id': word}",
-			"rec = self._Dictionary.get_record(_filter)",
-			"books",
-			"Books",
-			"books",
-			"search_string",
-			"_dictionary_search",
-			"text_near_occurrencies",
-			"search_perf",
-			"field_search",
-			"dict_to_json",
-			"_ePub_direct_search",
-			"set(",
-			"dupli",
-			"(?=.*?\\b{}\\b)",
-			"(?=.*?\\{}\\b)",
-			"compile",
-			"my_query",
-			"regex_near_search",
-			"_collection",
-			"_minmax",
-			"prev_book_id",
-			"set(",
-			"&",
-			"get_record"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1133,372 +974,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/Y/GIT-REPO/@Python/PyMount/Source/ListDevices.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5655,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2737,
-								2764
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"function_name_status_row": 77,
-							"incomplete_sync": null,
-							"origPos":
-							[
-								0.0,
-								1275.0
-							],
-							"remote_loading": false,
-							"syncScroll": false,
-							"synced": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1275.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Y/GIT-REPO/@Python/PyMount/LnLib/LnPyUtils.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13828,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11693,
-								11693
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										11698,
-										11699
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										11685,
-										11686
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"function_name_status_row": 354,
-							"incomplete_sync": null,
-							"origPos":
-							[
-								0.0,
-								6755.0
-							],
-							"remote_loading": false,
-							"syncScroll": false,
-							"synced": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6755.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/Y/GIT-REPO/@Python/PyMount/__main__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2946,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								554,
-								554
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"function_name_status_row": 21,
-							"incomplete_sync": null,
-							"origPos":
-							[
-								0.0,
-								0.0
-							],
-							"remote_loading": false,
-							"syncScroll": false,
-							"synced": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1533,23 +1010,7 @@
 		]
 	},
 	"menu_visible": true,
-	"output.exec":
-	{
-		"height": 346.0
-	},
 	"output.find_results":
-	{
-		"height": 0.0
-	},
-	"output.help":
-	{
-		"height": 132.0
-	},
-	"output.hex_viewer_inspector":
-	{
-		"height": 144.0
-	},
-	"output.mdpopups":
 	{
 		"height": 0.0
 	},
@@ -1557,16 +1018,8 @@
 	{
 		"height": 130.0
 	},
-	"output.stino_build_panel":
-	{
-		"height": 0.0
-	},
-	"output.stino_panel":
-	{
-		"height": 0.0
-	},
 	"pinned_build_system": "",
-	"project": "PyMount_Y.sublime-project",
+	"project": "PyMount_X.sublime-project",
 	"replace":
 	{
 		"height": 54.0

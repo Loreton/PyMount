@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 06-06-2020 18.13.45
+# Version ......: 09-06-2020 16.33.56
 #
 # #############################################
 
@@ -19,7 +19,7 @@ from Source.ParseInput import parseInput
 import LnLib as Ln
 # Ln=Prj.LnLib          # --- se faccio import all'interno di Source/__init__.py
 
-from Source.ListDevices import getBlockID
+from Source.DeviceList import DeviceList as deviceList
 
 ######################################
 # sample call:
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     gv.config   = config
     # -----------------------------------------------
 
-    getBlockID(gv)
+    device_data=deviceList(gv)
 
     if 'mount' in inpArgs.action:
         mount(gv)
