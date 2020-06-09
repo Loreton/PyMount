@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 09-06-2020 16.33.56
+# Version ......: 09-06-2020 18.26.10
 #
 # #############################################
 
@@ -11,6 +11,7 @@ import os
 from   pathlib import Path
 from dotmap import DotMap
 import pdb
+import subprocess
 
 # import Source as Prj
 
@@ -81,16 +82,50 @@ if __name__ == '__main__':
     gv.config   = config
     # -----------------------------------------------
 
-    device_data=deviceList(gv)
+    device_list=deviceList(gv)
+    req_device={}
+    for device, data in device_list.items():
+        if (inpArgs.device_name) and (device==inpArgs.device_name):
+            req_device[device]=device_list.pop(device)
+        elif (inpArgs.partuuid) and ('partuuid' in data) and (data.partuuid==inpArgs.partuuid):
+            req_device[device]=device_list.pop(device)
+        elif (inpArgs.uuid) and ('uuid' in data) and (data.uuid==inpArgs.uuid):
+            req_device[device]=device_list.pop(device)
 
-    if 'mount' in inpArgs.action:
-        mount(gv)
+        if req_device:
+            device_list=req_device
 
-    elif 'umount' in inpArgs.action:
-        umount(gv)
+    mounted = subprocess.check_output('/bin/mount', stderr=subprocess.STDOUT)  # ritorna <class 'bytes'>
+    mounted = mounted.decode('utf-8').split('\n')       # converti in STRing/LIST
 
-    else:
-        list(gv)
+
+    for device, data in device_list.items():
+        C.yellowH(text=device, tab=4)
+        if 'label' in data:     C.cyanH(text='{:12}:{}'.format('LABEL', data.label), tab=8)
+        if 'uuid' in data:      C.cyanH(text='{:12}:{}'.format('UUID', data.uuid), tab=8)
+        if 'partuuid' in data:  C.cyanH(text='{:12}:{}'.format('PARTUUID', data.partuuid), tab=8)
+        if 'size' in data:      C.cyanH(text='{:12}:{}'.format('SIZE', data.size), tab=8)
+        if 'fstype' in data:    C.cyanH(text='{:12}:{}'.format('FSTYPE', data.fstype), tab=8)
+        for item in mounted:
+            if not item.strip(): continue
+            token=item.split()
+            if device == token[0]:
+                C.magentaH(text='{:10}:{}'.format('mounted on', token[2]), tab=8)
+        print()
+
+
+
+
+
+
+    # if 'mount' in inpArgs.action:
+    #     mount(gv)
+
+    # elif 'umount' in inpArgs.action:
+    #     umount(gv)
+
+    # else:
+    #     list(gv)
 
     msg = "     program completed."
     print ()
