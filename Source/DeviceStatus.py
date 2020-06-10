@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 16.51.37
+# Version ......: 10-06-2020 17.16.24
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -9,31 +9,31 @@ import pdb
 
 
 
-def DeviceStatus(gv, device_list, req_name=None, req_partuuid=None, req_uuid=None):
-    global C
+# def DeviceStatus(gv, device_list, req_name=None, req_partuuid=None, req_uuid=None):
+def DeviceStatus(gv, device_list):
+    global C, mpForced
     logger=gv.lnLogger
     C=gv.Color
-    config=gv.config
+    inpArgs=gv.inpArgs
 
 
-    if gv.pdb_trace: pdb.set_trace()
+    # vediamo se il device richiesto esiste
     req_device_name=None
     for name, data in device_list.items():
-        if name==req_name or data.uuid==req_uuid or data.partuuid==req_partuuid:
+        if name==inpArgs.device_name or data.uuid==inpArgs.uuid or data.partuuid==inpArgs.partuuid:
             req_device_name=name
             break
 
-    fERROR=False
     if req_device_name:
         dev=device_list[req_device_name]
-        # if not dev.mountpoint:
-        #     msg="---> mountpoint not specified. Please modify configuration file."
-        #     dev.mountpoint='None ' + C.redH(text=msg, get=True)
-        #     fERROR=True
+        if (not dev.mountpoint) and inpArgs.mpoint:
+            dev.mountpoint=inpArgs.mpoint
+            mpForced=False
+        else:
+            dev.mountpoint='/mnt/{data.label}-{data.partuuid}'.format(**locals())
+            mpForced=True
 
         display(device_list, req_device_name)
-        if fERROR:
-            sys.exit(1)
         dev=dev.toDict()
 
     else:
@@ -63,9 +63,9 @@ def display(devices, req_device_name=None):
         C.cyan(text='{:12}: {}'.format('size', data.size), tab=8)
         C.cyan(text='{:12}: {}'.format('fstype', data.fstype), tab=8)
 
-        if not data.mountpoint:
-            msg="---> if not specified will be mounted on /mnt/{data.label}-{data.uuid}".format(**locals())
-            mp='None ' + C.yellowH(text=msg, get=True)
+        if mpForced and (not data.mounted):
+            msg="  ---> dinamically calculated. Use --mpoint arg to specify your own."
+            mp=data.mountpoint + C.yellowH(text=msg, get=True)
         else:
             mp=data.mountpoint
         C.cyanH(text='{:12}: {}'.format('mountpoint', mp), tab=8)

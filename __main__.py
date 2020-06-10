@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 16.13.16
+# Version ......: 10-06-2020 17.10.59
 #
 # #############################################
 
@@ -85,12 +85,16 @@ if __name__ == '__main__':
     gv.config   = config
     # -----------------------------------------------
 
+    # legge i device disponibili (lsblk)
     device_list=deviceList(gv)
-    mount_device=deviceStatus(gv, device_list=device_list, req_name=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
+
+    # prende tutti i paramentri
+    # mount_device=deviceStatus(gv, device_list=device_list, req_name=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
+    mount_device=deviceStatus(gv, device_list=device_list)
 
     # pdb.set_trace()
     if mount_device:
-        mountDevice(gv, mount_device)
+        mountDevice(gv, mount_device, fEXECUTE=inpArgs.go)
 
 
     msg = "     program completed."
