@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 09-06-2020 19.30.11
+# Version ......: 10-06-2020 09.50.03
 #
 # #############################################
 
@@ -21,7 +21,7 @@ import LnLib as Ln
 # Ln=Prj.LnLib          # --- se faccio import all'interno di Source/__init__.py
 
 from Source.DeviceList import DeviceList as deviceList
-from Source.CheckDevices import CheckDevices as checkDevices
+from Source.DeviceStatus import DeviceStatus as deviceStatus
 from Source.MountDevice import MountDevice as mountDevice
 
 ######################################
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # -------------------------------
     if inpArgs.log:
         log_dir  = os.path.join(script_path, 'log')
-        log_file = os.path.abspath(os.path.join(log_dir, '{prj_name}_{inpArgs.action}.log'.format(**locals())))
+        log_file = os.path.abspath(os.path.join(log_dir, '{prj_name}.log'.format(**locals())))
     else:
         log_file = None
     lnLogger = Ln.setLogger(filename=log_file, console=inpArgs.log_console, debug_level=3, log_modules=inpArgs.log_modules, color=Ln.Color() )
@@ -80,15 +80,17 @@ if __name__ == '__main__':
     gv.Ln       = Ln
     gv.lnLogger = lnLogger
     gv.Color    = C
+    gv.pdb_trace= inpArgs.pdb_trace
     gv.inpArgs  = inpArgs
     gv.config   = config
     # -----------------------------------------------
 
     device_list=deviceList(gv)
-    found_device=checkDevices(gv, device_list=device_list, req_device=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
+    mount_device=deviceStatus(gv, device_list=device_list, req_name=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
 
-    if found_device:
-        mountDevice(gv, found_device)
+
+    if mount_device:
+        mountDevice(gv, mount_device)
 
 
 

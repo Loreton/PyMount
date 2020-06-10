@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 09-06-2020 19.21.55
+# Version ......: 10-06-2020 09.12.40
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -19,8 +19,35 @@ from LnLib.LnPyUtils import bytes2H
 # # esegue il comando blkid
 # # Esempio di riga:
 # #   /dev/sdb5: LABEL="Lacie232GB_A" UUID="1448564A48562AAE" TYPE="ntfs"
+# # It is recommended to use
+# #       lsblk(8) command to get information about block devices,
+# #    or lsblk --fs to get an overview of filesystems,
+# #    or findmnt(8) to search in already mounted filesystems.
+# # lsblk --help per avere la lista dei campi di output
+# # lsblk --json -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH
 # ###########################################################################
 def DeviceList(gv, reqUUID=None):
+    logger=gv.lnLogger
+    CMD='/bin/lsblk --json --sort NAME -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH'
+    dev_list = subprocess.check_output(CMD.split())
+    my_dict = DotMap(json.loads(dev_list), _dynamic=False)
+    logger.info('DEVICES', json.dumps(my_dict, indent=4, sort_keys=True))
+
+    # - Elimina le non partitionss ed i device di sistema
+    DEVICES={}
+    for item in my_dict["blockdevices"]:
+        if item.fstype and not item.name.startswith('mmcblk0'):
+            DEVICES[item.name]=item
+
+    logger.info('DEVICES', json.dumps(DEVICES, indent=4, sort_keys=True))
+    return DotMap(DEVICES, _dynamic=False)
+
+# ###########################################################################
+# # esegue il comando blkid
+# # Esempio di riga:
+# #   /dev/sdb5: LABEL="Lacie232GB_A" UUID="1448564A48562AAE" TYPE="ntfs"
+# ###########################################################################
+def DeviceList_(gv, reqUUID=None):
     logger=gv.lnLogger
 
     # contiene la lista dei device ricavati dai comandi: mount (oppure df) e da blkid
