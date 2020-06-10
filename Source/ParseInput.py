@@ -1,7 +1,7 @@
 #!/usr/bin/python3.5
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 09.40.26
+# Version ......: 10-06-2020 16.54.09
 #
 # -----------------------------------------------
 
@@ -65,6 +65,7 @@ def parseInput(color=None):
     mount_group.add_argument('--uuid', help='specify disk UUID', default=None)
     mount_group.add_argument('--partuuid', help='specify disk PARTUUID', default=None)
     mount_group.add_argument('--device-name', help='specify device name', default=None)
+    parser.add_argument('--mountpoint', help='specify device mountmoint direcotry (DEFAULT: LABEL-UUID)', default=None)
 
     # - common options
     common_options(parser)

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 09.49.47
+# Version ......: 10-06-2020 16.51.37
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -9,87 +9,70 @@ import pdb
 
 
 
-# ###########################################################################
-# #
-# ###########################################################################
-def checkPartUUID(device_list, req_partuuid):
-    dev={}
-    for name, data in device_list.items():
-        if data.partuuid==req_partuuid:
-            dev[name]=device_list.pop(name)
-            break
-    return dev
-
-
-# ###########################################################################
-# #
-# ###########################################################################
-def checkUUID(device_list, req_uuid):
-
-    dev={}
-    for name, data in device_list.items():
-        if data.uuid==req_uuid:
-            dev[name]=device_list.pop(name)
-            break
-    return dev
-
-# ###########################################################################
-# #
-# ###########################################################################
-def checkName(device_list, req_name):
-
-    dev={}
-    for name, data in device_list.items():
-        if data.name==req_name:
-            dev[name]=device_list.pop(name)
-            break
-    return dev
-
-
-
-
-
-
 def DeviceStatus(gv, device_list, req_name=None, req_partuuid=None, req_uuid=None):
+    global C
     logger=gv.lnLogger
     C=gv.Color
+    config=gv.config
 
 
     if gv.pdb_trace: pdb.set_trace()
-    dev3=checkName(device_list, req_name)
-    dev1=checkPartUUID(device_list, req_partuuid)
-    dev2=checkUUID(device_list, req_uuid)
-    dev={}
-    if   dev1:
-        dev=dev1
-    elif dev2:
-        dev=dev2
-    elif dev3:
-        dev=dev3
+    req_device_name=None
+    for name, data in device_list.items():
+        if name==req_name or data.uuid==req_uuid or data.partuuid==req_partuuid:
+            req_device_name=name
+            break
 
-    if not dev:
+    fERROR=False
+    if req_device_name:
+        dev=device_list[req_device_name]
+        # if not dev.mountpoint:
+        #     msg="---> mountpoint not specified. Please modify configuration file."
+        #     dev.mountpoint='None ' + C.redH(text=msg, get=True)
+        #     fERROR=True
+
+        display(device_list, req_device_name)
+        if fERROR:
+            sys.exit(1)
+        dev=dev.toDict()
+
+    else:
+        display(device_list)
         print()
         C.magentaH(text='''
-            Il device richiesto non è stato trovato.
-            Immettere uno dei seguenti:''', tab=4)
+            Immettere uno dei device in lista''', tab=4)
         print()
-    else:
-        device_list=dev
+        dev={}
 
-
-    for device, data in device_list.items():
-        C.yellowH(text=device, tab=4)
-
-        C.cyanH(text='{:12}: {}'.format('name', data.name), tab=8)
-        C.cyanH(text='{:12}: {}'.format('label', data.label), tab=8)
-        C.cyanH(text='{:12}: {}'.format('path', data.path), tab=8)
-        C.cyanH(text='{:12}: {}'.format('uuid', data.uuid), tab=8)
-        C.cyanH(text='{:12}: {}'.format('partuuid', data.partuuid), tab=8)
-        C.cyanH(text='{:12}: {}'.format('size', data.size), tab=8)
-        C.cyanH(text='{:12}: {}'.format('fstype', data.fstype), tab=8)
-        C.magentaH(text='{:12}: {}'.format('mountpoint', data.mountpoint), tab=8)
-
-        print()
 
     return dev
 
+
+
+
+def display(devices, req_device_name=None):
+    for name, data in devices.items():
+        if req_device_name and not name==req_device_name: continue
+        C.yellowH(text=name, tab=4)
+
+        C.cyan(text='{:12}: {}'.format('name', data.name), tab=8)
+        C.cyan(text='{:12}: {}'.format('label', data.label), tab=8)
+        C.cyan(text='{:12}: {}'.format('path', data.path), tab=8)
+        C.cyanH(text='{:12}: {}'.format('uuid', data.uuid), tab=8)
+        C.cyan(text='{:12}: {}'.format('partuuid', data.partuuid), tab=8)
+        C.cyan(text='{:12}: {}'.format('size', data.size), tab=8)
+        C.cyan(text='{:12}: {}'.format('fstype', data.fstype), tab=8)
+
+        if not data.mountpoint:
+            msg="---> if not specified will be mounted on /mnt/{data.label}-{data.uuid}".format(**locals())
+            mp='None ' + C.yellowH(text=msg, get=True)
+        else:
+            mp=data.mountpoint
+        C.cyanH(text='{:12}: {}'.format('mountpoint', mp), tab=8)
+
+        C.whiteH(text='{:12}: {}'.format('------', '------'), tab=8)
+
+        color=C.greenH if data.mounted else C.magentaH
+        color(text='{:12}: {}'.format('mounted', data.mounted), tab=8)
+
+        print()

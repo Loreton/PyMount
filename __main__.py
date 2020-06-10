@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 09.50.03
+# Version ......: 10-06-2020 16.13.16
 #
 # #############################################
 
@@ -88,20 +88,10 @@ if __name__ == '__main__':
     device_list=deviceList(gv)
     mount_device=deviceStatus(gv, device_list=device_list, req_name=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
 
-
+    # pdb.set_trace()
     if mount_device:
         mountDevice(gv, mount_device)
 
-
-
-    # if 'mount' in inpArgs.action:
-    #     mount(gv)
-
-    # elif 'umount' in inpArgs.action:
-    #     umount(gv)
-
-    # else:
-    #     list(gv)
 
     msg = "     program completed."
     print ()

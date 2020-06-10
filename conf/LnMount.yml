@@ -1,42 +1,18 @@
 
-PARTUUID:
-    7fcb449d-01:
-        description:  LnDisk partition
-        UUID: 843671A53671993E
-        type: ntfs
-        mountpoint: /home/500GB_ext4
-
-    7fcb449d-02:
-        description:   Ubuntu Partition
-        UUID: 441d4b2e-2e17-451d-8835-485e388f6595
-        type:  ext4
-        mountpoint: /home/500GB_ext4
-
 UUID:
-    843671A53671993E:
-        description:  LnDisk partition
-        PARTUUID: 7fcb449d-01
-        type: ntfs
-        mountpoint: /home/500GB_ext4
+    0EBE144A0EBE144As:
+        label       : LN1TB_A
+        uuid        : 0EBE144A0EBE144A
+        partuuid    : 00442663-01
+        size        : 931.5G
+        fstype      : ntfs
+        mountpoint  : /mnt/LN1TB_A-00442663-01
 
-    441d4b2e-2e17-451d-8835-485e388f6595:
-        description:   Ubuntu Partition
-        PARTUUID: 7fcb449d-02
-        type:  ext4
-        mountpoint: /home/500GB_ext4
+    1C01-1919s:
+        label       : LORETO32GB
+        uuid        : 1C01-1919
+        partuuid    : 57caf133-01
+        size        : 29.8G
+        fstype      : vfat
+        mountpoint  : /mnt/Loreto32GB-57caf133-01
 
-    1C03-1548:
-        type: vfat
-        mountpoint: /home/Loreto32GB
-
-    1C01-1919:
-        type: vfat
-        mountpoint:  /home/Loreto32GB
-
-    0EBE144A0EBE144A:
-        type: ntfs
-        mountpoint: /home/pi/_mnt/LN1TB_A
-
-    fc729883-dc26-4197-b193-321b293f5ad6:
-        type: ext4
-        mountpoint: /home/500GB_ext4

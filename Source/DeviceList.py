@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 09.12.40
+# Version ......: 10-06-2020 15.59.26
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -28,16 +28,27 @@ from LnLib.LnPyUtils import bytes2H
 # ###########################################################################
 def DeviceList(gv, reqUUID=None):
     logger=gv.lnLogger
+    config_dev=gv.config.UUID
+
     CMD='/bin/lsblk --json --sort NAME -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH'
     dev_list = subprocess.check_output(CMD.split())
     my_dict = DotMap(json.loads(dev_list), _dynamic=False)
     logger.info('DEVICES', json.dumps(my_dict, indent=4, sort_keys=True))
 
-    # - Elimina le non partitionss ed i device di sistema
+    # - Elimina le non partitions ed i device di sistema
     DEVICES={}
     for item in my_dict["blockdevices"]:
-        if item.fstype and not item.name.startswith('mmcblk0'):
+        if item.fstype and not item.name.startswith('xxmmcblk0'):
+            if not item.mountpoint:
+                item.mounted=False
+                    # copiamolo dal file di configurazione
+                if item.uuid in config_dev:
+                    item.mountpoint=config_dev[item.uuid]['mountpoint']
+            else:
+                item.mounted=True
             DEVICES[item.name]=item
+
+
 
     logger.info('DEVICES', json.dumps(DEVICES, indent=4, sort_keys=True))
     return DotMap(DEVICES, _dynamic=False)
