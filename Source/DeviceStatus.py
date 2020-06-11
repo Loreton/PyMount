@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 17.16.24
+# Version ......: 11-06-2020 15.09.39
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -16,6 +16,8 @@ def DeviceStatus(gv, device_list):
     C=gv.Color
     inpArgs=gv.inpArgs
 
+    mpForced=False
+
 
     # vediamo se il device richiesto esiste
     req_device_name=None
@@ -25,13 +27,14 @@ def DeviceStatus(gv, device_list):
             break
 
     if req_device_name:
+        if gv.pdb: pdb.set_trace()
         dev=device_list[req_device_name]
-        if (not dev.mountpoint) and inpArgs.mpoint:
-            dev.mountpoint=inpArgs.mpoint
-            mpForced=False
-        else:
-            dev.mountpoint='/mnt/{data.label}-{data.partuuid}'.format(**locals())
-            mpForced=True
+        if not dev.mountpoint:
+            if inpArgs.mpoint:
+                dev.mountpoint=inpArgs.mpoint
+            else:
+                dev.mountpoint='/mnt/{data.label}-{data.partuuid}'.format(**locals())
+                mpForced=True
 
         display(device_list, req_device_name)
         dev=dev.toDict()
@@ -64,7 +67,7 @@ def display(devices, req_device_name=None):
         C.cyan(text='{:12}: {}'.format('fstype', data.fstype), tab=8)
 
         if mpForced and (not data.mounted):
-            msg="  ---> dinamically calculated. Use --mpoint arg to specify your own."
+            msg="  ---> dynamically calculated. Use --mpoint arg to specify your own."
             mp=data.mountpoint + C.yellowH(text=msg, get=True)
         else:
             mp=data.mountpoint

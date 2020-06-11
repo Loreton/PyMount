@@ -16,3 +16,22 @@ UUID:
         fstype      : vfat
         mountpoint  : /mnt/Loreto32GB-57caf133-01
 
+    843671A53671993E:
+        label       : TOS_LnDisk
+        uuid        : 843671A53671993E
+        partuuid    : 7fcb449d-01
+        size        : 708.6G
+        fstype      : ntfs
+        mountpoint  : /mnt/TOS_LnDisk-7fcb449d-01
+        ------      : ------
+        mounted     : False
+
+    441d4b2e-2e17-451d-8835-485e388f6595:
+        label       : TOS_Ubuntu
+        uuid        : 441d4b2e-2e17-451d-8835-485e388f6595
+        partuuid    : 7fcb449d-02
+        size        : 222.9G
+        fstype      : ext4
+        mountpoint  : /mnt/TOS_Ubuntu-7fcb449d-02
+        ------      : ------
+        mounted     : False

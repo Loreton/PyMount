@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 17.19.54
+# Version ......: 11-06-2020 15.35.02
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
 from pathlib import Path
 from dotmap import DotMap
 import subprocess
+
+from LnLib.LnPrompt import prompt
 
 # ###########################################################################
 # #
@@ -34,15 +36,18 @@ def MountDevice(gv, dev, fEXECUTE=False):
 
         CMD="sudo /bin/mount -t {dev.fstype} {OPTIONS} -U {dev.uuid} {dev.mountpoint}".format(**locals())
         C.yellowH(text=CMD, tab=8)
+
+        if not fEXECUTE:
+            print()
+            choice=prompt('    Enter "go" to proceed with mount.', validKeys='go')
+            if choice.lower()=='go':
+                fEXECUTE=True
+            prompt()
+
         if fEXECUTE:
             result=subprocess.check_output(CMD.split())
             if result:
                 C.error(text="ERRORE nell'esecuzione del comando di mount", tab=8)
-
-        else:
-            print()
-            C.cyanH(text='enter --go arg to execute command', tab=8)
-            print()
 
     else:
         C.yellowH(text="""

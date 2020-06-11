@@ -1,7 +1,7 @@
 #!/usr/bin/python3.5
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 17.15.10
+# Version ......: 11-06-2020 15.08.39
 #
 # -----------------------------------------------
 
@@ -19,7 +19,7 @@ def common_options(my_parser):
     my_parser.add_argument('--go', action='store_true', help=c_green('load data. default is --dry-run'))
 
     my_parser.add_argument('--display-args', action='store_true', help=c_green('Display input paramenters'))
-    my_parser.add_argument('--pdb-trace', action='store_true', help=c_green('attiva il debug del pdb'))
+    my_parser.add_argument('--pdb', action='store_true', help=c_green('attiva il debug del pdb'))
     my_parser.add_argument('--debug', action='store_true', help=c_green('display paths and input args'))
     my_parser.add_argument('--log', action='store_true', help=c_green('activate log.'))
     my_parser.add_argument('--log-console', action='store_true', help=c_green('activate log and write to console too.'))

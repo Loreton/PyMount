@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 10-06-2020 17.10.59
+# Version ......: 11-06-2020 15.09.17
 #
 # #############################################
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     gv.Ln       = Ln
     gv.lnLogger = lnLogger
     gv.Color    = C
-    gv.pdb_trace= inpArgs.pdb_trace
+    gv.pdb      = inpArgs.pdb
     gv.inpArgs  = inpArgs
     gv.config   = config
     # -----------------------------------------------
