@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 11-06-2020 15.35.02
+# Version ......: 17-06-2020 15.18.33
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -42,7 +42,6 @@ def MountDevice(gv, dev, fEXECUTE=False):
             choice=prompt('    Enter "go" to proceed with mount.', validKeys='go')
             if choice.lower()=='go':
                 fEXECUTE=True
-            prompt()
 
         if fEXECUTE:
             result=subprocess.check_output(CMD.split())
