@@ -1,1 +1,1 @@
-../../LnPythonLib/LnPyUtils/splitString.py
+../../LnPyLib/Utils-LN/splitString.py

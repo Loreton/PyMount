@@ -1,1 +1,1 @@
-../../LnPythonLib/LnPrompt/LnPrompt.py
+../../LnPyLib/Prompt-LN/LnPrompt.py

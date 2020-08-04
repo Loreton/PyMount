@@ -1,1 +1,1 @@
-../../LnPythonLib/LnLogger/LnLogger.py
+../../LnPyLib/Logger-LN/LnLogger.py

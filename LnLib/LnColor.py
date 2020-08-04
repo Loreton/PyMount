@@ -1,1 +1,1 @@
-../../LnPythonLib/LnColor/LnColor.py
+../../LnPyLib/Color-LN/LnColor.py
