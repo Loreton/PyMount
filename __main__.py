@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 14-08-2020 16.55.58
+# Version ......: 14-08-2020 18.20.03
 #
 # #############################################
 
@@ -27,7 +27,7 @@ from Source.parseInputLN import parseInput
 # import Source as Prj
 # from LnLib.yamlLoader import loadYamlFile
 # from LnLib.LnLogger import setLogger
-# from LnLib.LnColor import LnColor; C=LnColor()
+from LnLib.colorLN import LnColor; C=LnColor()
 
 # from Source.Main.ParseInput import parseInput
 # from Source.Functions.Crontab import Crontab
@@ -58,13 +58,13 @@ if __name__ == '__main__':
     if prj_dir.stem=='bin': prj_dir=prj_dir.parent
     prj_name=prj_dir.stem
 
-    os.environ['Prj_Name']=prj_name # potrebbe usarla loadYamlFile()
+    os.environ['Prj_Name']=prj_name.lower() # potrebbe usarla loadYamlFile()
 
     ''' read Main configuration file '''
-    dConfig=loadYamlFile(f'conf/{prj_name}.yml', resolve=True, fPRINT=False)
+    dConfig=loadYamlFile(f'conf/{prj_name.lower()}.yml', resolve=True, fPRINT=False)
 
     ''' parsing input '''
-    args, inp_log, dbg=parseInput(server_list=dConfig['servers'], module_list=list(dConfig['modules']))
+    args, inp_log, dbg=parseInput(color=C)
 
     ''' logger '''
     log=dConfig['logger']
