@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 21-06-2020 15.37.12
+# Version ......: 14-08-2020 16.56.42
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -12,8 +12,8 @@ import json
 from dotmap import DotMap
 
 # import string # per maketrans
-from LnLib.splitString import stringSplitRE
-from LnLib.bytesToHuman import bytes2H
+from LnLib.splitStringLN import stringSplitRE
+from LnLib.bytesToHumanLN import bytes2H
 
 # ###########################################################################
 # # esegue il comando blkid

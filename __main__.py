@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 11-06-2020 15.09.17
+# Version ......: 14-08-2020 16.55.58
 #
 # #############################################
 
@@ -13,12 +13,33 @@ from dotmap import DotMap
 import pdb
 # import subprocess
 
-# import Source as Prj
 
-from Source.ReadConfigurationFile import readConfigFile
-from Source.ParseInput import parseInput
-import LnLib as Ln
-# Ln=Prj.LnLib          # --- se faccio import all'interno di Source/__init__.py
+import types # for SimpleNamespace()
+
+from LnLib.yamlLoaderLN import loadYamlFile
+from LnLib.loggerLN import setLogger
+# from LnLib.sshClassLN import LnSSH
+from LnLib import pathMonkeyFunctionsLN # server per i miei comandi di Path (tra cui file.sizeRotate())
+
+
+from Source.parseInputLN import parseInput
+
+# import Source as Prj
+# from LnLib.yamlLoader import loadYamlFile
+# from LnLib.LnLogger import setLogger
+# from LnLib.LnColor import LnColor; C=LnColor()
+
+# from Source.Main.ParseInput import parseInput
+# from Source.Functions.Crontab import Crontab
+# from LnLib.yamlLoaderLN import loadYamlFile
+# from LnLib.loggerLN import setLogger
+# from LnLib.sshClassLN import LnSSH
+# from LnLib import pathMonkeyFunctionsLN # server per i miei comandi di Path (tra cui file.sizeRotate())
+
+# from Source.ParseInput import parseInput
+
+# from Source.ReadConfigurationFile import readConfigFile
+# from Source.ParseInput import parseInput
 
 from Source.DeviceList import DeviceList as deviceList
 from Source.DeviceStatus import DeviceStatus as deviceStatus
@@ -29,6 +50,47 @@ from Source.MountDevice import MountDevice as mountDevice
 #
 ######################################
 if __name__ == '__main__':
+    gv=types.SimpleNamespace()
+
+    prj_dir=Path(sys.argv[0]).resolve().parent
+
+    # Questo step serve per quando siamo all'interno dello zip
+    if prj_dir.stem=='bin': prj_dir=prj_dir.parent
+    prj_name=prj_dir.stem
+
+    os.environ['Prj_Name']=prj_name # potrebbe usarla loadYamlFile()
+
+    ''' read Main configuration file '''
+    dConfig=loadYamlFile(f'conf/{prj_name}.yml', resolve=True, fPRINT=False)
+
+    ''' parsing input '''
+    args, inp_log, dbg=parseInput(server_list=dConfig['servers'], module_list=list(dConfig['modules']))
+
+    ''' logger '''
+    log=dConfig['logger']
+    log['filename']=f'/tmp/{prj_name}.log'
+
+
+    #- override configuration logger with input parameters
+    if inp_log.console: log['console']=inp_log.console
+    if inp_log.modules: log['modules']=inp_log.modules
+    if inp_log.level: log['level']=inp_log.level
+
+
+    lnLogger = setLogger(log)
+    lnLogger.debug3('input   arguments', vars(args))
+    lnLogger.debug3('logging arguments', inp_log)
+    lnLogger.debug3('debug   arguments', vars(dbg))
+    lnLogger.debug3('configuration data', dConfig)
+    # -------------------------------
+    gv.logger=lnLogger
+    gv.TAB='   [Ln]: '
+
+
+
+
+
+if __name__ == 'xxx__main__':
 
     # -------------------------------
     # - parse input parameters

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 17-06-2020 15.18.33
+# Version ......: 14-08-2020 16.57.11
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -9,7 +9,7 @@ from pathlib import Path
 from dotmap import DotMap
 import subprocess
 
-from LnLib.LnPrompt import prompt
+from LnLib.promptLN import prompt
 
 # ###########################################################################
 # #

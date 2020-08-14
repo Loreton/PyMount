@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 11-06-2020 15.09.39
+# Version ......: 14-08-2020 16.56.31
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
-import pdb
-
 
 
 # def DeviceStatus(gv, device_list, req_name=None, req_partuuid=None, req_uuid=None):

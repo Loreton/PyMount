@@ -1,6 +1,20 @@
 # il mointpoint se non definito o nullo viene
 # creato dinamicamente con Label+PARTUUID
-UUID:
+logger:
+    log: true
+    console: false                      # may be overridden by input arguments
+    filename: /tmp/${env:Prj_Name}.log  # may be overridden at runtime
+    disp_date: true
+    disp_fullpath_module: true
+    disp_time: true
+    level: info                     # may be overridden by input arguments
+    modules: []                     # may be overridden by input arguments
+    rotation_filesize: 10485760
+    rotation_nfiles: 5
+
+
+
+UUIDs:
     0EBE144A0EBE144As:
         label       : LN1TB_A
         uuid        : 0EBE144A0EBE144A
@@ -28,6 +42,20 @@ UUID:
         involved_programs:
             - minidlna           (sudo vi /etc/minidlna.conf)
             - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
+        # mountpoint : /mnt/TOS_LnDisk-7fcb449d-01
+
+
+    0E4D094B0E4D094B:
+        label       : SeaGate_500GB
+        PARTLABEL   : Basic data partition # cos'è????
+        uuid        : 0E4D094B0E4D094B
+        partuuid    : 42e11593-fea2-11e8-8d90-1c7508f2b04f
+        size        : 465.8G
+        fstype      : ntfs
+        mountpoint  : /mnt/SeaGate_500GB
+        involved_programs:
+            # - minidlna           (sudo vi /etc/minidlna.conf)
+            # - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
         # mountpoint : /mnt/TOS_LnDisk-7fcb449d-01
 
 
