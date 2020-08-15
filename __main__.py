@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 14-08-2020 18.20.03
+# Version ......: 15-08-2020 19.12.28
 #
 # #############################################
 
@@ -24,25 +24,12 @@ from LnLib import pathMonkeyFunctionsLN # server per i miei comandi di Path (tra
 
 from Source.parseInputLN import parseInput
 
-# import Source as Prj
-# from LnLib.yamlLoader import loadYamlFile
-# from LnLib.LnLogger import setLogger
 from LnLib.colorLN import LnColor; C=LnColor()
+from LnLib.promptLN import prompt, setPrompt; setPrompt(LnColor)
 
-# from Source.Main.ParseInput import parseInput
-# from Source.Functions.Crontab import Crontab
-# from LnLib.yamlLoaderLN import loadYamlFile
-# from LnLib.loggerLN import setLogger
-# from LnLib.sshClassLN import LnSSH
-# from LnLib import pathMonkeyFunctionsLN # server per i miei comandi di Path (tra cui file.sizeRotate())
-
-# from Source.ParseInput import parseInput
-
-# from Source.ReadConfigurationFile import readConfigFile
-# from Source.ParseInput import parseInput
-
-from Source.DeviceList import DeviceList as deviceList
 from Source.DeviceStatus import DeviceStatus as deviceStatus
+from Source.DeviceStatus import _set as setDev; setDev(LnColor)
+from Source.DeviceList import DeviceList as deviceList
 from Source.MountDevice import MountDevice as mountDevice
 
 ######################################
@@ -63,7 +50,7 @@ if __name__ == '__main__':
     ''' read Main configuration file '''
     dConfig=loadYamlFile(f'conf/{prj_name.lower()}.yml', resolve=True, fPRINT=False)
 
-    ''' parsing input '''
+    ''' parsing input (return Namespace data)'''
     args, inp_log, dbg=parseInput(color=C)
 
     ''' logger '''
@@ -78,14 +65,31 @@ if __name__ == '__main__':
 
 
     lnLogger = setLogger(log)
-    lnLogger.debug3('input   arguments', vars(args))
+
+    lnLogger.debug3('input   arguments', args.__dict__)
     lnLogger.debug3('logging arguments', inp_log)
-    lnLogger.debug3('debug   arguments', vars(dbg))
+    lnLogger.debug3('debug   arguments', dbg.__dict__)
     lnLogger.debug3('configuration data', dConfig)
     # -------------------------------
     gv.logger=lnLogger
     gv.TAB='   [Ln]: '
 
+  # legge i device disponibili (lsblk)
+    device_list=deviceList(dConfig['UUIDs'], logger=lnLogger)
+    lnLogger.console('device list', device_list)
+
+    # prende tutti i parametsri
+    mount_device=deviceStatus(args, devices=device_list, logger=lnLogger)
+
+    if mount_device:
+        mountDevice(mount_device, fEXECUTE=inpArgs.go, logger=lnLogger)
+
+
+    msg = "     program completed."
+    print ()
+    print (msg)
+    print ()
+    # Ln.Exit(0, msg)
 
 
 
