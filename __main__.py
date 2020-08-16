@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 15-08-2020 19.12.28
+# Version ......: 16-08-2020 13.45.32
 #
 # #############################################
 
@@ -11,26 +11,30 @@ import os
 from   pathlib import Path
 from dotmap import DotMap
 import pdb
-# import subprocess
 
+##############################################################################
+# - classe utile da passare per moduli che richiedo il logger.
+##############################################################################
+class nullLogger():
+    def dummy(self,  title, *args, **kwargs): pass
+    critical=error=warning=info=debug=debug1=debug2=debug3=set_level=dummy
+from LnLib.colorLN import LnColor; C=LnColor()
+
+# - può essere inviato solo al primo richiamodella funzione/modulo
+_myGlobalInitialSettings={'logger': nullLogger(), 'color': LnColor()}
 
 import types # for SimpleNamespace()
 
 from LnLib.yamlLoaderLN import loadYamlFile
-from LnLib.loggerLN import setLogger
-# from LnLib.sshClassLN import LnSSH
-from LnLib import pathMonkeyFunctionsLN # server per i miei comandi di Path (tra cui file.sizeRotate())
+from LnLib.loggerLN     import setLogger
+from LnLib.promptLN     import prompt
+from LnLib              import pathMonkeyFunctionsLN # necessario per i miei comandi di Path (tra cui file.sizeRotate())
 
 
 from Source.parseInputLN import parseInput
-
-from LnLib.colorLN import LnColor; C=LnColor()
-from LnLib.promptLN import prompt, setPrompt; setPrompt(LnColor)
-
-from Source.DeviceStatus import DeviceStatus as deviceStatus
-from Source.DeviceStatus import _set as setDev; setDev(LnColor)
-from Source.DeviceList import DeviceList as deviceList
-from Source.MountDevice import MountDevice as mountDevice
+from Source.DeviceStatus import deviceStatus
+from Source.DeviceList   import deviceList
+from Source.MountDevice  import mountDevice
 
 ######################################
 # sample call:
@@ -74,97 +78,21 @@ if __name__ == '__main__':
     gv.logger=lnLogger
     gv.TAB='   [Ln]: '
 
-  # legge i device disponibili (lsblk)
-    device_list=deviceList(dConfig['UUIDs'], logger=lnLogger)
-    lnLogger.console('device list', device_list)
+    # ---- inizializzazione di alcuni moduli che utilizzano i global values...
+    _myGlobalInitialSettings['logger']=lnLogger
+    prompt(gVars=_myGlobalInitialSettings)
 
-    # prende tutti i parametsri
-    mount_device=deviceStatus(args, devices=device_list, logger=lnLogger)
+    # ---- legge i device disponibili (lsblk)
+    device_list=deviceList(dConfig['UUIDs'], gVars=_myGlobalInitialSettings)
 
-    if mount_device:
-        mountDevice(mount_device, fEXECUTE=inpArgs.go, logger=lnLogger)
+    # ---- cattura tutti i parametsri dei devices
+    my_device=deviceStatus(args, devices=device_list, gVars=_myGlobalInitialSettings)
 
-
-    msg = "     program completed."
-    print ()
-    print (msg)
-    print ()
-    # Ln.Exit(0, msg)
-
-
-
-
-if __name__ == 'xxx__main__':
-
-    # -------------------------------
-    # - parse input parameters
-    # -------------------------------
-    inpArgs=parseInput(Ln.Color())
-    # fCONSOLE=inpArgs.log_console
-
-    # -------------------------------
-    # - read configuration file
-    # -------------------------------
-    _data            = readConfigFile(filename='LnMount', fPRINT=False)
-    config           = DotMap(_data['content'])
-    prj_name         = _data['prjname']
-    script_path      = _data['script_path']
-    yaml_config_file = _data['yaml_config_file']
-
-    # -------------------------------
-    # - Inizializzazione del logger
-    # -------------------------------
-    if inpArgs.log:
-        log_dir  = os.path.join(script_path, 'log')
-        log_file = os.path.abspath(os.path.join(log_dir, '{prj_name}.log'.format(**locals())))
-    else:
-        log_file = None
-    lnLogger = Ln.setLogger(filename=log_file, console=inpArgs.log_console, debug_level=3, log_modules=inpArgs.log_modules, color=Ln.Color() )
-
-    lnLogger.info('input arguments', vars(inpArgs))
-    lnLogger.info('configuration data', _data)
-    Path.LnSet(lnLogger)
-
-    C = Ln.Color()
-    if inpArgs.debug:
-        C.setColor(color=C._cyanH)
-        print('     Input arguments:')
-        for k,v in vars(inpArgs).items():
-            print('         {k:<15}: {v}'.format(**locals()))
-        print()
-        C.setColor(color=C._yellowH)
-        print('     {0:<15}: {1}'.format('prj_name', prj_name))
-        print('     {0:<15}: {1}'.format('ScriptDir', str(script_path)))
-        print('     {0:<15}: {1}'.format('config file', yaml_config_file))
-        print()
-        sys.exit(1)
-
-    # -------------------------------
-    # - set global variables
-    # -------------------------------
-    gv          = DotMap(_dynamic=False)
-    gv.Ln       = Ln
-    gv.lnLogger = lnLogger
-    gv.Color    = C
-    gv.pdb      = inpArgs.pdb
-    gv.inpArgs  = inpArgs
-    gv.config   = config
-    # -----------------------------------------------
-
-    # legge i device disponibili (lsblk)
-    device_list=deviceList(gv)
-
-    # prende tutti i paramentri
-    # mount_device=deviceStatus(gv, device_list=device_list, req_name=inpArgs.device_name, req_partuuid=inpArgs.partuuid, req_uuid=inpArgs.uuid)
-    mount_device=deviceStatus(gv, device_list=device_list)
-
-    # pdb.set_trace()
-    if mount_device:
-        mountDevice(gv, mount_device, fEXECUTE=inpArgs.go)
+    if my_device:
+        mountDevice(my_device, fEXECUTE=dbg.go, gVars=_myGlobalInitialSettings)
 
 
     msg = "     program completed."
     print ()
     print (msg)
     print ()
-    # Ln.Exit(0, msg)

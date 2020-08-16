@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 15-08-2020 19.01.03
+# Version ......: 16-08-2020 18.01.04
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -16,10 +16,6 @@ from LnLib.splitStringLN import stringSplitRE
 from LnLib.bytesToHumanLN import bytes2H
 
 
-def _set(Color)
-    gobal C
-    C=Color()
-
 
 # ###########################################################################
 # # esegue il comando blkid
@@ -32,7 +28,13 @@ def _set(Color)
 # # lsblk --help per avere la lista dei campi di output
 # # lsblk --json -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH
 # ###########################################################################
-def DeviceList(uuids, logger):
+def deviceList(uuids, gVars={}):
+    if gVars:
+        global C
+        if 'color' in gVars: C=gVars['color']
+        if 'logger' in gVars: logger=gVars['logger']
+
+
     # logger=gv.lnLogger
     # config_dev=gv.config.UUID
 
@@ -44,11 +46,11 @@ def DeviceList(uuids, logger):
 
 
     # ----- cut no fstype and system devices (mmcblk0..)
-    DEVICES={}
+    found_DEVICES={}
     for item in blk_devices:
         item=SimpleNamespace(**item) #  just for easy mnagement
         # item=RecursiveNamespace(**item) #  just for easy mnagement
-        if item.fstype and not item.name.startswith('XXXXXX_mmcblk0'):
+        if item.fstype and not item.name.startswith('mmcblk0'):
             if not item.mountpoint:
                 item.mounted=False
                     # copiamolo dal file di configurazione
@@ -56,11 +58,9 @@ def DeviceList(uuids, logger):
                     item.mountpoint=uuids[item.uuid]['mountpoint']
             else:
                 item.mounted=True
-            DEVICES[item.name]=item.__dict__ # put dict version
+            found_DEVICES[item.name]=item.__dict__ # put dict version
 
 
 
-    # logger.info('DEVICES', json.dumps(DEVICES, indent=4, sort_keys=True))
-    print(type(DEVICES))
-    logger.info('DEVICES found:', DEVICES)
-    return DEVICES
+    logger.info('DEVICES found:', found_DEVICES)
+    return found_DEVICES

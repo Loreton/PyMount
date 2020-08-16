@@ -1,86 +1,94 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 15-08-2020 18.59.32
+# Version ......: 16-08-2020 12.45.32
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
 from LnLib.colorLN import LnColor; C=LnColor()
 from LnLib.nameSpaceLN import RecursiveNamespace
+from types import SimpleNamespace
 
 
-def _set(Color)
-    gobal C
-    C=Color()
 
 
 ##########################################################
 #
 ##########################################################
-def DeviceStatus(inpArgs, devices):
+def deviceStatus(inpArgs, devices, gVars={}):
+    if gVars:
+        global C
+        if 'color' in gVars: C=gVars['color']
+
     global mpForced
     mpForced=False
-    devices=RecursiveNamespace(**devices)
+    # devices=RecursiveNamespace(**devices)
 
     # vediamo se il device richiesto esiste
-    req_device_name=None
 
-    for name, data in devices.__dict__.items():
-        if name==inpArgs.device_name or data.uuid==inpArgs.uuid or data.partuuid==inpArgs.partuuid:
-            req_device_name=name
+    my_dev={}
+    for name, data in devices.items():
+        _device=SimpleNamespace(**data)
+        if name==inpArgs.device_name or _device.uuid==inpArgs.uuid or _device.partuuid==inpArgs.partuuid:
+            my_dev=data
             break
 
-    if req_device_name:
-        if gv.pdb: pdb.set_trace()
-        dev=devices[req_device_name]
-        if not dev.mountpoint:
-            if inpArgs.mpoint:
-                dev.mountpoint=inpArgs.mpoint
-            else:
-                dev.mountpoint=f'/mnt/{data.label}-{data.partuuid}'
+
+
+
+    # import pdb; pdb.set_trace() # by Loreto
+    if my_dev:
+        _device=SimpleNamespace(**my_dev)
+        if not _device.mountpoint: # if not already defined
+            if inpArgs.mpoint:  # ... get from input
+                _device.mountpoint=inpArgs.mpoint
+            else: # .. or force a default mountpoint
+                _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'
                 mpForced=True
 
-        display(devices, req_device_name)
-        dev=dev.toDict()
+        display(my_dev)
+        # my_dev=my_dev.toDict()
 
     else:
-        display(devices)
+        for name, _device in devices.items():
+            display(_device)
         print()
         C.pMagentaH(text='''
             Immettere uno dei device in lista''', tab=4)
         print()
-        dev={}
 
 
-    return dev
-
+    return my_dev # dictionary
 
 
 
-def display(devices, req_device_name=None):
-    for name, data in devices.__dict__.items():
-        if req_device_name and not name==req_device_name: continue
+#############################################################
+# if sigle_device: just a single device will be displayed.
+#############################################################
+def display(device):
+    _device=SimpleNamespace(**device)
+    C.pYellowH(_device.name, tab=4)
 
-        C.pYellowH(name, tab=4)
+    C.pCyan( f'name:        {_device.name}', tab=8)
+    C.pCyan( f'label:       {_device.label}', tab=8)
+    C.pCyan( f'path:        {_device.path}', tab=8)
+    C.pCyanH(f'uuid:        {_device.uuid}', tab=8)
+    C.pCyan( f'partuuid:    {_device.partuuid}', tab=8)
+    C.pCyan( f'size:        {_device.size}', tab=8)
+    C.pCyan( f'fstype:      {_device.fstype}', tab=8)
 
-        C.pCyan( f'name:        {data.name}', tab=8)
-        C.pCyan( f'label:       {data.label}', tab=8)
-        C.pCyan( f'path:        {data.path}', tab=8)
-        C.pCyanH(f'uuid:        {data.uuid}', tab=8)
-        C.pCyan( f'partuuid:    {data.partuuid}', tab=8)
-        C.pCyan( f'size:        {data.size}', tab=8)
-        C.pCyan( f'fstype:      {data.fstype}', tab=8)
+    if mpForced and (not _device.mounted):
+        msg="  ---> dynamically calculated. Use --mpoint arg to specify your own."
+        mp=_device.mountpoint + C.YellowH(text=msg)
+    else:
+        mp=_device.mountpoint
 
-        if mpForced and (not data.mounted):
-            msg="  ---> dynamically calculated. Use --mpoint arg to specify your own."
-            mp=data.mountpoint + C.YellowH(text=msg)
-        else:
-            mp=data.mountpoint
-        C.pCyanH(f'mountpoint:  {mp}', tab=8)
+    if _device.mounted:
+        color=C.pGreenH
+        status='already mounted'
+    else:
+        color=C.pMagentaH
+        status='NOT mounted'
+    color(f'mountpoint:  {mp}   - {status}', tab=8)
 
-        C.pWhiteH('------:      ------', tab=8)
-
-        color=C.pGreenH if data.mounted else C.pMagentaH
-        color(f'mounted: {data.mounted}', tab=8)
-
-        print()
+    print()
