@@ -2,14 +2,14 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 16-08-2020 18.33.18
+# Version ......: 17-08-2020 17.42.38
 #
 # #############################################
 
 import sys; sys.dont_write_bytecode = True
 import os
 from   pathlib import Path
-from dotmap import DotMap
+from types import SimpleNamespace
 import pdb
 
 ##############################################################################
@@ -32,9 +32,11 @@ from LnLib              import pathMonkeyFunctionsLN # necessario per i miei com
 
 
 from Source.parseInputLN import parseInput
-from Source.DeviceStatus import deviceStatus
+# from Source.DeviceStatus import deviceStatus
 from Source.DeviceList   import deviceList
-from Source.MountDevice  import mountDevice
+# from Source.MountUmount  import mount, umount
+from Source import MountUmount
+from Source.DisplayDevice  import display
 
 ######################################
 # sample call:
@@ -82,15 +84,28 @@ if __name__ == '__main__':
     # ---- inizializzazione di alcuni moduli che utilizzano i global values...
     _myGlobalInitialSettings['logger']=lnLogger
     prompt(gVars=_myGlobalInitialSettings)
+    MountUmount.setup(gVars=_myGlobalInitialSettings)
+    # ----
+
 
     # ---- legge i device disponibili (lsblk)
     device_list=deviceList(dConfig['UUIDs'], gVars=_myGlobalInitialSettings)
+    if args.action=='list':
+        for name, _device in device_list.items():
+            display(_device)
+        print()
+        sys.exit()
 
-    # ---- cattura tutti i parametsri dei devices
-    my_device=deviceStatus(args, devices=device_list, gVars=_myGlobalInitialSettings)
-
-    if my_device:
-        mountDevice(my_device, fEXECUTE=dbg.go, gVars=_myGlobalInitialSettings)
+    for name, my_dev in device_list.items():
+        _device=SimpleNamespace(**my_dev)
+        if name==args.device_name or _device.uuid==args.uuid or _device.partuuid==args.partuuid:
+            display(my_dev)
+            if args.action=='mount':
+                MountUmount.mount(my_dev, fEXECUTE=dbg.go)
+                break
+            elif args.action=='umount':
+                MountUmount.umount(my_dev, fEXECUTE=dbg.go)
+                break
 
 
     msg = "     program completed."

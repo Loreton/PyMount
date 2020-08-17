@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 16-08-2020 18.01.04
+# Version ......: 17-08-2020 17.07.36
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -45,22 +45,35 @@ def deviceList(uuids, gVars={}):
     logger.info('DEVICES', json.dumps(blk_devices, indent=4, sort_keys=True))
 
 
-    # ----- cut no fstype and system devices (mmcblk0..)
+    '''
+        cut no fstype and system devices (mmcblk0..)
+        merge with configuration data
+    '''
     found_DEVICES={}
     for item in blk_devices:
-        item=SimpleNamespace(**item) #  just for easy mnagement
-        # item=RecursiveNamespace(**item) #  just for easy mnagement
-        if item.fstype and not item.name.startswith('mmcblk0'):
-            if not item.mountpoint:
-                item.mounted=False
-                    # copiamolo dal file di configurazione
-                if item.uuid in uuids:
-                    item.mountpoint=uuids[item.uuid]['mountpoint']
+        _device=SimpleNamespace(**item) #  just for easy management
+
+        if _device.fstype and not _device.name.startswith('mmcblk0'):
+            if _device.mountpoint: # if already mounted
+                _device.mounted=True
+                _device.mp_dynamic=False
+
+            elif _device.uuid in uuids:
+                _device.mounted=False
+                _device.mp_dynamic=False
+                #- copy from configuration file
+                _device.mountpoint=uuids[_device.uuid]['mountpoint']
             else:
-                item.mounted=True
-            found_DEVICES[item.name]=item.__dict__ # put dict version
+                _device.mounted=False
+                _device.mp_dynamic=True
+                # - create dynamic mp
+                _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'
+
+            found_DEVICES[_device.name]=_device.__dict__ # put dict version
 
 
 
     logger.info('DEVICES found:', found_DEVICES)
     return found_DEVICES
+
+

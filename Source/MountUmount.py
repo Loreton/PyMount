@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 17-08-2020 15.58.12
+# Version ......: 17-08-2020 17.47.11
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -12,38 +12,26 @@ import subprocess, shlex
 from LnLib.promptLN import prompt
 from LnLib.nameSpaceLN import RecursiveNamespace
 
-
 # ###########################################################################
 # #
 # ###########################################################################
-def mountDevice(dev, fEXECUTE=False, gVars={}):
-    assert isinstance(dev, dict)
+def setup(gVars={}):
     if gVars:
         global C, logger
         if 'color' in gVars: C=gVars['color']
         if 'logger' in gVars: logger=gVars['logger']
 
+
+# ###########################################################################
+# #
+# ###########################################################################
+def mount(dev, fEXECUTE=False):
+    assert isinstance(dev, dict)
     dev=SimpleNamespace(**dev)
 
     if dev.mounted:
-        print("device already mounted")
+        print(f"device {dev.path} already mounted: {dev.mountpoint}")
         return
-
-    elif not Path(dev.mountpoint).is_dir():
-        C.pYellowH(f"""
-            mountpoint directory {dev.mountpoint} doesn't exists.
-            I'm going to create it.
-            """, tab=4)
-
-        rCode, out=localExec(f'sudo mkdir {dev.mountpoint}')
-        if rCode:
-            C.pError("Errore nella creazione delle directory", tab=4)
-            sys.exit(1)
-
-        rCode, out=localExec(f'sudo chown pi:pi {dev.mountpoint}')
-        if rCode:
-            C.pError("Errore durante il chown", tab=4)
-            sys.exit(1)
 
 
     if Path(dev.mountpoint).is_dir():
@@ -65,6 +53,7 @@ def mountDevice(dev, fEXECUTE=False, gVars={}):
                 fEXECUTE=True
 
         if fEXECUTE:
+            check_mp(dev.mountpoint)
             result=subprocess.check_output(shlex.split(CMD))
             if result:
                 C.pError(text="ERRORE nell'esecuzione del comando di mount", tab=8)
@@ -77,6 +66,55 @@ def mountDevice(dev, fEXECUTE=False, gVars={}):
 
 
 
+
+# ###########################################################################
+# #
+# ###########################################################################
+def umount(dev, fEXECUTE=False):
+    assert isinstance(dev, dict)
+    dev=SimpleNamespace(**dev)
+
+    if not dev.mounted:
+        print(f"device {dev.path} not mounted.")
+        return
+
+
+    CMD=f"sudo /bin/umount {dev.mountpoint}"
+    C.pYellowH(text=CMD, tab=8)
+
+    if not fEXECUTE:
+        print()
+        choice=prompt('    Enter "go" to proceed with umount.', validKeys='go')
+        if choice.lower()=='go':
+            fEXECUTE=True
+
+    if fEXECUTE:
+        rCode, result=localExec(CMD)
+        if rCode:
+            logger.critical("ERRORE nell'esecuzione del comando", CMD)
+        else:
+            rCode, result=localExec('sudo rm -rf {dev.mountpoint}')
+            print('removing mountpoint directory - rCode:', rCode)
+
+##################################################
+# check mount-point
+##################################################
+def check_mp(mountpoint):
+    if not Path(mountpoint).is_dir():
+        C.pYellowH(f"""
+            mountpoint directory {mountpoint} doesn't exists.
+            I'm going to create it.
+            """, tab=4)
+
+        rCode, out=localExec(f'sudo mkdir {mountpoint}')
+        if rCode:
+            C.pError(f"Errore nella creazione della directory {mountpoint}", tab=4)
+            sys.exit(1)
+
+        rCode, out=localExec(f'sudo chown pi:pi {mountpoint}')
+        if rCode:
+            C.pError(f"Errore durante il chown sulla dir: {mountpoint}", tab=4)
+            sys.exit(1)
 
 ##################################################
 # _alias_exec
