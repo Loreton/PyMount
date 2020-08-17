@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 16-08-2020 13.45.32
+# Version ......: 16-08-2020 18.33.18
 #
 # #############################################
 
@@ -48,6 +48,7 @@ if __name__ == '__main__':
     # Questo step serve per quando siamo all'interno dello zip
     if prj_dir.stem=='bin': prj_dir=prj_dir.parent
     prj_name=prj_dir.stem
+    prj_name='pymount'
 
     os.environ['Prj_Name']=prj_name.lower() # potrebbe usarla loadYamlFile()
 

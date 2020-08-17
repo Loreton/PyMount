@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 16-08-2020 13.46.52
+# Version ......: 17-08-2020 15.58.12
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -19,8 +19,9 @@ from LnLib.nameSpaceLN import RecursiveNamespace
 def mountDevice(dev, fEXECUTE=False, gVars={}):
     assert isinstance(dev, dict)
     if gVars:
-        global C
+        global C, logger
         if 'color' in gVars: C=gVars['color']
+        if 'logger' in gVars: logger=gVars['logger']
 
     dev=SimpleNamespace(**dev)
 
@@ -28,7 +29,24 @@ def mountDevice(dev, fEXECUTE=False, gVars={}):
         print("device already mounted")
         return
 
-    elif Path(dev.mountpoint).is_dir():
+    elif not Path(dev.mountpoint).is_dir():
+        C.pYellowH(f"""
+            mountpoint directory {dev.mountpoint} doesn't exists.
+            I'm going to create it.
+            """, tab=4)
+
+        rCode, out=localExec(f'sudo mkdir {dev.mountpoint}')
+        if rCode:
+            C.pError("Errore nella creazione delle directory", tab=4)
+            sys.exit(1)
+
+        rCode, out=localExec(f'sudo chown pi:pi {dev.mountpoint}')
+        if rCode:
+            C.pError("Errore durante il chown", tab=4)
+            sys.exit(1)
+
+
+    if Path(dev.mountpoint).is_dir():
         C.pWhiteH(text="trying to mount disk {dev.path}".format(**locals()), tab=8)
         if dev.fstype=='vfat':
             OPTIONS='-o defaults,noauto,relatime,nousers,rw,flush,utf8=1,uid=pi,gid=pi,dmask=002,fmask=113'
@@ -53,8 +71,30 @@ def mountDevice(dev, fEXECUTE=False, gVars={}):
 
     else:
         C.pYellowH(text="""
-            mountpoint directory doesn't exists.
-            Please create it.
+            shoud not occurr. !!!!????
             """, tab=4)
         sys.exit(1)
 
+
+
+
+##################################################
+# _alias_exec
+##################################################
+def localExec(command):
+    splitted_cmd=shlex.split(command)
+    logger.debug1('executing command:', [command])
+
+    try:
+        p1 = subprocess.run(splitted_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, check=True)
+        logger.debug3('    rcode: ', p1.returncode)
+        logger.debug3('    result:', p1.stdout)
+        return p1.returncode, p1.stdout
+
+    except subprocess.CalledProcessError as e:
+        logger.error("ERROR:", "",
+                          f"command:   {command}",
+                          f"rcode:     {e.returncode}",
+                          f"exception: {str(e)}")
+
+        return e.returncode, str(e)
