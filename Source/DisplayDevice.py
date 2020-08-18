@@ -1,13 +1,22 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 17-08-2020 17.08.03
+# Version ......: 18-08-2020 08.55.30
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
-from LnLib.colorLN import LnColor; C=LnColor()
+# from LnLib.colorLN import LnColor; C=LnColor()
 from types import SimpleNamespace
 
+
+
+# ###########################################################################
+# # set logger and color
+# ###########################################################################
+def setup(gVars):
+    global C, logger
+    if 'color' in gVars: C=gVars['color']
+    if 'logger' in gVars: logger=gVars['logger']
 
 #############################################################
 # if sigle_device: just a single device will be displayed.

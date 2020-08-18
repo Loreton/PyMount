@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 17-08-2020 17.42.38
+# Version ......: 18-08-2020 09.02.03
 #
 # #############################################
 
@@ -19,9 +19,8 @@ class nullLogger():
     def dummy(self,  title, *args, **kwargs): pass
     critical=error=warning=info=debug=debug1=debug2=debug3=set_level=dummy
 from LnLib.colorLN import LnColor; C=LnColor()
-
-# - può essere inviato solo al primo richiamodella funzione/modulo
 _myGlobalInitialSettings={'logger': nullLogger(), 'color': LnColor()}
+
 
 import types # for SimpleNamespace()
 
@@ -32,11 +31,9 @@ from LnLib              import pathMonkeyFunctionsLN # necessario per i miei com
 
 
 from Source.parseInputLN import parseInput
-# from Source.DeviceStatus import deviceStatus
-from Source.DeviceList   import deviceList
-# from Source.MountUmount  import mount, umount
+from Source import DeviceList
 from Source import MountUmount
-from Source.DisplayDevice  import display
+from Source import DisplayDevice; display=DisplayDevice.display
 
 ######################################
 # sample call:
@@ -47,15 +44,19 @@ if __name__ == '__main__':
 
     prj_dir=Path(sys.argv[0]).resolve().parent
 
-    # Questo step serve per quando siamo all'interno dello zip
+    '''
+        Questo step serve per quando siamo all'interno dello zip
+        anche se, per non incorrere in errori,
+        mi conviene impostare il nome staticamente
+    '''
     if prj_dir.stem=='bin': prj_dir=prj_dir.parent
     prj_name=prj_dir.stem
     prj_name='pymount'
 
-    os.environ['Prj_Name']=prj_name.lower() # potrebbe usarla loadYamlFile()
+    os.environ['Prj_Name']=prj_name # potrebbe usarla loadYamlFile()
 
     ''' read Main configuration file '''
-    dConfig=loadYamlFile(f'conf/{prj_name.lower()}.yml', resolve=True, fPRINT=False)
+    dConfig=loadYamlFile(f'conf/{prj_name}.yml', resolve=True, fPRINT=False)
 
     ''' parsing input (return Namespace data)'''
     args, inp_log, dbg=parseInput(color=C)
@@ -72,6 +73,7 @@ if __name__ == '__main__':
 
 
     lnLogger = setLogger(log)
+    _myGlobalInitialSettings['logger']=lnLogger # update
 
     lnLogger.debug3('input   arguments', args.__dict__)
     lnLogger.debug3('logging arguments', inp_log)
@@ -81,32 +83,49 @@ if __name__ == '__main__':
     gv.logger=lnLogger
     gv.TAB='   [Ln]: '
 
+
     # ---- inizializzazione di alcuni moduli che utilizzano i global values...
-    _myGlobalInitialSettings['logger']=lnLogger
     prompt(gVars=_myGlobalInitialSettings)
     MountUmount.setup(gVars=_myGlobalInitialSettings)
+    DeviceList.setup(gVars=_myGlobalInitialSettings)
+    DisplayDevice.setup(gVars=_myGlobalInitialSettings)
     # ----
 
 
     # ---- legge i device disponibili (lsblk)
-    device_list=deviceList(dConfig['UUIDs'], gVars=_myGlobalInitialSettings)
+    device_list=DeviceList.deviceList(dConfig['UUIDs'])
     if args.action=='list':
         for name, _device in device_list.items():
             display(_device)
         print()
         sys.exit()
 
+    rCode=1
     for name, my_dev in device_list.items():
         _device=SimpleNamespace(**my_dev)
         if name==args.device_name or _device.uuid==args.uuid or _device.partuuid==args.partuuid:
+            C.pYellow('''
+                -----------------------------------
+                - required device - current status
+                ----------------------------------- ''', tab=4)
             display(my_dev)
             if args.action=='mount':
-                MountUmount.mount(my_dev, fEXECUTE=dbg.go)
+                rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go)
                 break
             elif args.action=='umount':
-                MountUmount.umount(my_dev, fEXECUTE=dbg.go)
+                rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go)
                 break
 
+    #- display current status
+    if rCode==0:
+        device_list=DeviceList.deviceList(dConfig['UUIDs'])
+        my_dev=device_list[_device.name]
+        C.pYellow('''
+
+            ----------------------------------------------
+            - required device - status after operation
+            ---------------------------------------------- ''', tab=4)
+        display(my_dev)
 
     msg = "     program completed."
     print ()

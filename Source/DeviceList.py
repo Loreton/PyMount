@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 17-08-2020 17.07.36
+# Version ......: 18-08-2020 07.41.41
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -11,10 +11,14 @@ import subprocess, shlex
 import json
 from  types import SimpleNamespace
 
-from LnLib.nameSpaceLN import RecursiveNamespace
-from LnLib.splitStringLN import stringSplitRE
-from LnLib.bytesToHumanLN import bytes2H
 
+# ###########################################################################
+# # set logger and color
+# ###########################################################################
+def setup(gVars):
+    global C, logger
+    if 'color' in gVars: C=gVars['color']
+    if 'logger' in gVars: logger=gVars['logger']
 
 
 # ###########################################################################
@@ -28,17 +32,8 @@ from LnLib.bytesToHumanLN import bytes2H
 # # lsblk --help per avere la lista dei campi di output
 # # lsblk --json -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH
 # ###########################################################################
-def deviceList(uuids, gVars={}):
-    if gVars:
-        global C
-        if 'color' in gVars: C=gVars['color']
-        if 'logger' in gVars: logger=gVars['logger']
-
-
-    # logger=gv.lnLogger
-    # config_dev=gv.config.UUID
-
-    # ----- list of BLK_DEVICES
+def deviceList(uuids):
+    # ----- get list of BLK_DEVICES
     CMD='/bin/lsblk --json --sort NAME -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH'
     dev_list = subprocess.check_output(shlex.split(CMD))
     blk_devices = json.loads(dev_list)["blockdevices"] # list of dict
@@ -66,14 +61,10 @@ def deviceList(uuids, gVars={}):
             else:
                 _device.mounted=False
                 _device.mp_dynamic=True
-                # - create dynamic mp
+                #- create dynamic mp
                 _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'
 
             found_DEVICES[_device.name]=_device.__dict__ # put dict version
 
-
-
     logger.info('DEVICES found:', found_DEVICES)
     return found_DEVICES
-
-
