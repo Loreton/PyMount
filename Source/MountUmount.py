@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 18-08-2020 09.02.42
+# Version ......: 25-08-2020 19.24.51
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -11,7 +11,7 @@ import subprocess, shlex
 
 from LnLib.promptLN import prompt
 from LnLib.nameSpaceLN import RecursiveNamespace
-from LnLib.localExec import runCommand
+from LnLib.runCommand import runCommand
 
 # ###########################################################################
 # #
