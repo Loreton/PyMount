@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 18-08-2020 09.02.03
+# Version ......: 23-09-2020 18.47.43
 #
 # #############################################
 
@@ -27,7 +27,7 @@ import types # for SimpleNamespace()
 from LnLib.yamlLoaderLN import loadYamlFile
 from LnLib.loggerLN     import setLogger
 from LnLib.promptLN     import prompt
-from LnLib              import pathMonkeyFunctionsLN # necessario per i miei comandi di Path (tra cui file.sizeRotate())
+from LnLib              import monkeyPathLN # necessario per i miei comandi di Path (tra cui file.sizeRotate())
 
 
 from Source.parseInputLN import parseInput
@@ -93,7 +93,9 @@ if __name__ == '__main__':
 
 
     # ---- legge i device disponibili (lsblk)
-    device_list=DeviceList.deviceList(dConfig['UUIDs'])
+    req_mpoint=args.mpoint if 'mpoint' in args else None
+    device_list=DeviceList.deviceList(dConfig['UUIDs'], req_mpoint=req_mpoint)
+
     if args.action=='list':
         for name, _device in device_list.items():
             display(_device)
@@ -118,7 +120,7 @@ if __name__ == '__main__':
 
     #- display current status
     if rCode==0:
-        device_list=DeviceList.deviceList(dConfig['UUIDs'])
+        device_list=DeviceList.deviceList(dConfig['UUIDs'], req_mpoint)
         my_dev=device_list[_device.name]
         C.pYellow('''
 

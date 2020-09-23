@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 18-08-2020 07.41.41
+# Version ......: 23-09-2020 18.41.13
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -32,13 +32,13 @@ def setup(gVars):
 # # lsblk --help per avere la lista dei campi di output
 # # lsblk --json -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH
 # ###########################################################################
-def deviceList(uuids):
+def deviceList(uuids, req_mpoint):
     # ----- get list of BLK_DEVICES
     CMD='/bin/lsblk --json --sort NAME -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH'
     dev_list = subprocess.check_output(shlex.split(CMD))
     blk_devices = json.loads(dev_list)["blockdevices"] # list of dict
     logger.info('DEVICES', json.dumps(blk_devices, indent=4, sort_keys=True))
-
+    # import pdb; pdb.set_trace() # by Loreto
 
     '''
         cut no fstype and system devices (mmcblk0..)
@@ -56,13 +56,19 @@ def deviceList(uuids):
             elif _device.uuid in uuids:
                 _device.mounted=False
                 _device.mp_dynamic=False
-                #- copy from configuration file
-                _device.mountpoint=uuids[_device.uuid]['mountpoint']
+                if req_mpoint:
+                    _device.mountpoint=req_mpoint
+                elif 'mountpoint' in uuids[_device.uuid]:
+                    _device.mountpoint=uuids[_device.uuid]['mountpoint'] #- copy from configuration file
+                else:
+                    _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'
             else:
                 _device.mounted=False
                 _device.mp_dynamic=True
-                #- create dynamic mp
-                _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'
+                if req_mpoint:
+                    _device.mountpoint=req_mpoint
+                else:
+                    _device.mountpoint=f'/mnt/{_device.label}-{_device.partuuid}'#- create dynamic mp
 
             found_DEVICES[_device.name]=_device.__dict__ # put dict version
 

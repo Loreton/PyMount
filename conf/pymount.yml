@@ -15,13 +15,13 @@ logger:
 
 
 UUIDs:
-    0EBE144A0EBE144As:
+    0EBE144A0EBE144A:
         label       : LN1TB_A
         uuid        : 0EBE144A0EBE144A
         partuuid    : 00442663-01
         size        : 931.5G
         fstype      : ntfs
-        mountpoint  : /mnt/LN1TB_A-00442663-01
+        mountpoint  : /mnt/LN1TB_A
 
     1C01-1919s:
         label       : LORETO32GB

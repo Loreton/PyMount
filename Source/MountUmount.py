@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 25-08-2020 19.24.51
+# Version ......: 23-09-2020 18.47.34
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -28,11 +28,14 @@ def setup(gVars={}):
 # ###########################################################################
 def mount(dev, fEXECUTE=False):
     assert isinstance(dev, dict)
+
     dev=SimpleNamespace(**dev)
 
     if dev.mounted:
-        logger.console(f"device {dev.path} already mounted: {dev.mountpoint}")
-        return 0
+        msg = f"device {dev.path} already mounted: {dev.mountpoint}"
+        logger.info(msg)
+        C.pYellowH(text=msg, tab=4)
+        return 1
 
     C.pWhiteH(text="trying to mount disk {dev.path}".format(**locals()), tab=4)
     if dev.fstype=='vfat':
