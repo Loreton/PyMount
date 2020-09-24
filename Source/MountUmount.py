@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 23-09-2020 18.47.34
+# Version ......: 24-09-2020 14.58.27
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -24,18 +24,18 @@ def setup(gVars={}):
 
 
 # ###########################################################################
-# #
+# # return: 0 all is OK
 # ###########################################################################
 def mount(dev, fEXECUTE=False):
     assert isinstance(dev, dict)
-
+    logger.info('DEVICE required:', dev)
     dev=SimpleNamespace(**dev)
 
     if dev.mounted:
-        msg = f"device {dev.path} already mounted: {dev.mountpoint}"
+        msg = f"device {dev.path} mounted: {dev.mountpoint}"
         logger.info(msg)
         C.pYellowH(text=msg, tab=4)
-        return 1
+        return 0
 
     C.pWhiteH(text="trying to mount disk {dev.path}".format(**locals()), tab=4)
     if dev.fstype=='vfat':
@@ -45,26 +45,29 @@ def mount(dev, fEXECUTE=False):
     else:
         OPTIONS=''
 
-    CMD="sudo /bin/mount -t {dev.fstype} {OPTIONS} -U {dev.uuid} {dev.mountpoint}".format(**locals())
-    C.pYellowH(text=CMD, tab=4)
+    mount_cmd="sudo /bin/mount -t {dev.fstype} {OPTIONS} -U {dev.uuid} {dev.mountpoint}".format(**locals())
 
-    if not fEXECUTE:
-        print()
-        choice=prompt('    Enter "go" to proceed with mount.', validKeys='go')
-        if choice.lower()=='go':
-            fEXECUTE=True
 
+    # import pdb; pdb.set_trace() # by Loreto
     if fEXECUTE:
+        C.pYellowH(text=mount_cmd, tab=4)
         check_mp(dev.mountpoint)
-        result=subprocess.check_output(shlex.split(CMD))
+        # result=subprocess.check_output(shlex.split(mount_cmd))
+        rCode, result=runCommand(mount_cmd, logger)
         if result:
             msg="ERRORE nell'esecuzione del comando di mount"
             C.pError(text=msg, tab=4)
             logger.critical(msg)
         else:
-            logger.info(f'device {dev.path} has been mounted on dir: {dev.mountpoint}')
+            msg=f'device {dev.path} has been mounted on dir: {dev.mountpoint}'
+            logger.info(msg)
+            C.pCyanH(text=msg, tab=4)
 
-    return 0
+    else:
+        C.pYellowH(text=f'DRY-RUN - {mount_cmd}', tab=4)
+        rCode=0
+
+    return rCode
 
 
 # ###########################################################################
@@ -72,31 +75,33 @@ def mount(dev, fEXECUTE=False):
 # ###########################################################################
 def umount(dev, fEXECUTE=False):
     assert isinstance(dev, dict)
+    logger.info('DEVICE required:', dev)
     dev=SimpleNamespace(**dev)
 
     if not dev.mounted:
-        logger.console(f"device {dev.path} not mounted.")
-        return
+        msg=f"device {dev.path} not mounted."
+        logger.info(msg)
+        C.pYellowH(text=msg, tab=4)
+        return 0
 
 
-    umount_cmd=f"sudo /bin/umount {dev.mountpoint}"
-    C.pYellowH(text=umount_cmd, tab=4)
-
-    if not fEXECUTE:
-        print()
-        choice=prompt('    Enter "go" to proceed with umount.', validKeys='go')
-        if choice.lower()=='go':
-            fEXECUTE=True
+    umount_cmd=f"sudo /bin/umount {dev.path}"
 
     if fEXECUTE:
+        C.pYellowH(text=umount_cmd, tab=4)
         rCode, result=runCommand(umount_cmd, logger)
         if rCode:
+            msg=f"ERRORE nell'esecuzione del comando {umount_cmd}"
+            C.pError(text=msg, tab=4)
             logger.critical("ERRORE nell'esecuzione del comando", umount_cmd)
         else:
-            rCode, result=runCommand(f'sudo rm -rf {dev.mountpoint}', logger)
-            C.pYellowH(f'mountpoint directory removing - rCode: {rCode}', tab=4)
+            rCode1, result=runCommand(f'sudo rm -rf {dev.mountpoint}', logger)
+            C.pYellowH(f'mountpoint directory removing - rCode: {rCode1}', tab=4)
+    else:
+        C.pYellowH(text=f'DRY-RUN - {umount_cmd}', tab=4)
+        rCode=0
 
-    return 0
+    return rCode
 
 ##################################################
 # check mount-point
@@ -124,3 +129,4 @@ def check_mp(mountpoint):
             C.pYellowH("directory owner has been changed", tab=4)
     else:
         logger.info('   directory already exists.')
+

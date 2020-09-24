@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 23-09-2020 18.41.13
+# Version ......: 24-09-2020 14.48.10
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -11,14 +11,6 @@ import subprocess, shlex
 import json
 from  types import SimpleNamespace
 
-
-# ###########################################################################
-# # set logger and color
-# ###########################################################################
-def setup(gVars):
-    global C, logger
-    if 'color' in gVars: C=gVars['color']
-    if 'logger' in gVars: logger=gVars['logger']
 
 
 # ###########################################################################
@@ -37,7 +29,7 @@ def deviceList(uuids, req_mpoint):
     CMD='/bin/lsblk --json --sort NAME -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,PARTUUID,SIZE,PATH'
     dev_list = subprocess.check_output(shlex.split(CMD))
     blk_devices = json.loads(dev_list)["blockdevices"] # list of dict
-    logger.info('DEVICES', json.dumps(blk_devices, indent=4, sort_keys=True))
+    # logger.debug('DEVICES', json.dumps(blk_devices, indent=4, sort_keys=True))
     # import pdb; pdb.set_trace() # by Loreto
 
     '''
@@ -72,5 +64,5 @@ def deviceList(uuids, req_mpoint):
 
             found_DEVICES[_device.name]=_device.__dict__ # put dict version
 
-    logger.info('DEVICES found:', found_DEVICES)
+    # logger.debug('DEVICES found:', found_DEVICES)
     return found_DEVICES

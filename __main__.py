@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 23-09-2020 18.47.43
+# Version ......: 24-09-2020 14.50.58
 #
 # #############################################
 
@@ -19,7 +19,6 @@ class nullLogger():
     def dummy(self,  title, *args, **kwargs): pass
     critical=error=warning=info=debug=debug1=debug2=debug3=set_level=dummy
 from LnLib.colorLN import LnColor; C=LnColor()
-_myGlobalInitialSettings={'logger': nullLogger(), 'color': LnColor()}
 
 
 import types # for SimpleNamespace()
@@ -34,6 +33,37 @@ from Source.parseInputLN import parseInput
 from Source import DeviceList
 from Source import MountUmount
 from Source import DisplayDevice; display=DisplayDevice.display
+
+
+def get_my_dev(config, args, all_devices=False, fPRINT=False):
+    req_mpoint=args.mpoint if 'mpoint' in args else None
+    device_list=DeviceList.deviceList(config, req_mpoint=req_mpoint)
+
+    if all_devices:
+        lnLogger.debug('DEVICES found:', device_list)
+        if fPRINT:
+            for name, _device in device_list.items():
+                display(_device, msg='current status')
+            print()
+        return device_list
+
+    lnLogger.info('DEVICE required:', args)
+    for name, my_dev in device_list.items():
+
+        _device=SimpleNamespace(**my_dev)
+
+        args_name=getattr(args, 'name', None)
+        args_uuid=getattr(args, 'uuid', None)
+        args_partuuid=getattr(args, 'partuuid', None)
+
+        if name==args_name or _device.uuid==args_uuid or _device.partuuid==args_partuuid:
+            lnLogger.info('DEVICE found:', my_dev)
+            return my_dev
+
+    lnLogger.info('NO DEVICE found:')
+    return None
+
+
 
 ######################################
 # sample call:
@@ -73,7 +103,6 @@ if __name__ == '__main__':
 
 
     lnLogger = setLogger(log)
-    _myGlobalInitialSettings['logger']=lnLogger # update
 
     lnLogger.debug3('input   arguments', args.__dict__)
     lnLogger.debug3('logging arguments', inp_log)
@@ -85,49 +114,47 @@ if __name__ == '__main__':
 
 
     # ---- inizializzazione di alcuni moduli che utilizzano i global values...
-    prompt(gVars=_myGlobalInitialSettings)
-    MountUmount.setup(gVars=_myGlobalInitialSettings)
-    DeviceList.setup(gVars=_myGlobalInitialSettings)
-    DisplayDevice.setup(gVars=_myGlobalInitialSettings)
+    _myGlobal={'logger': lnLogger, 'color': LnColor()}
+    prompt(gVars=_myGlobal)
+    MountUmount.setup(gVars=_myGlobal)
+    DisplayDevice.setup(gVars=_myGlobal)
     # ----
-
-
-    # ---- legge i device disponibili (lsblk)
-    req_mpoint=args.mpoint if 'mpoint' in args else None
-    device_list=DeviceList.deviceList(dConfig['UUIDs'], req_mpoint=req_mpoint)
-
     if args.action=='list':
-        for name, _device in device_list.items():
-            display(_device)
-        print()
+        device_list=get_my_dev(dConfig['UUIDs'], args, all_devices=True, fPRINT=True)
         sys.exit()
 
-    rCode=1
-    for name, my_dev in device_list.items():
-        _device=SimpleNamespace(**my_dev)
-        if name==args.device_name or _device.uuid==args.uuid or _device.partuuid==args.partuuid:
-            C.pYellow('''
-                -----------------------------------
-                - required device - current status
-                ----------------------------------- ''', tab=4)
-            display(my_dev)
-            if args.action=='mount':
-                rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go)
-                break
-            elif args.action=='umount':
-                rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go)
-                break
+    # ---- legge i device disponibili (lsblk)
+    my_dev=get_my_dev(dConfig['UUIDs'], args)
+    if not my_dev:
+        C.pError(text='Required device was NOT found', tab=4)
+        sys.exit()
 
+
+    if args.action=='mount':
+        display(my_dev, msg=f'status before {args.action}')
+        rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go)
+
+    elif args.action=='umount':
+        display(my_dev, msg=f'status before {args.action}')
+        rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go)
+
+    elif args.action=='remount':
+        display(my_dev, msg=f'status before {args.action}')
+        rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go)
+        if rCode==0:
+            my_dev=get_my_dev(dConfig['UUIDs'], args) # re-read device status
+            rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go)
+
+
+
+
+
+    # display(my_dev, msg=f'status after {args.action}')
     #- display current status
+    # print(rCode)
     if rCode==0:
-        device_list=DeviceList.deviceList(dConfig['UUIDs'], req_mpoint)
-        my_dev=device_list[_device.name]
-        C.pYellow('''
-
-            ----------------------------------------------
-            - required device - status after operation
-            ---------------------------------------------- ''', tab=4)
-        display(my_dev)
+        my_dev=get_my_dev(dConfig['UUIDs'], args)
+        display(my_dev, msg=f'status after {args.action}')
 
     msg = "     program completed."
     print ()

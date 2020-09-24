@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 18-08-2020 08.55.30
+# Version ......: 24-09-2020 14.38.29
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
@@ -21,8 +21,12 @@ def setup(gVars):
 #############################################################
 # if sigle_device: just a single device will be displayed.
 #############################################################
-def display(device):
+def display(device, msg):
     _device=SimpleNamespace(**device)
+    C.pYellow(f'''
+        ----------------------------------------------
+        - [{_device.path}] {msg}
+        ---------------------------------------------- ''', tab=4)
     C.pYellowH(_device.name, tab=4)
 
     C.pCyan( f'name:        {_device.name}', tab=8)
@@ -42,7 +46,7 @@ def display(device):
                     '''
     elif _device.mounted:
         color=C.pGreenH
-        status='already mounted'
+        status='mounted'
     else:
         color=C.pMagentaH
         status='NOT mounted'
