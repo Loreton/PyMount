@@ -128,4 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.sublime
+#- by Loreto
+bin/*2???-??-??_*.zip
+# **/*.zip
+.sublime/
