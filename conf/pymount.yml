@@ -1,7 +1,7 @@
 # il mointpoint se non definito o nullo viene
 # creato dinamicamente con Label+PARTUUID
 logger:
-    req_log: true
+    enable: true
     console: false                      # may be overridden by input arguments
     filename: /tmp/${env:Prj_Name}.log  # may be overridden at runtime
     disp_date: true
