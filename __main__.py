@@ -1,38 +1,49 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python
+#
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 24-09-2020 14.50.58
+# Date .........: 2021-05-24
 #
 # #############################################
 
-import sys; sys.dont_write_bytecode = True
-import os
-from   pathlib import Path
-from types import SimpleNamespace
-import pdb
-
-##############################################################################
-# - classe utile da passare per moduli che richiedo il logger.
-##############################################################################
-class nullLogger():
-    def dummy(self,  title, *args, **kwargs): pass
-    critical=error=warning=info=debug=debug1=debug2=debug3=set_level=dummy
-from LnLib.colorLN import LnColor; C=LnColor()
+import  sys; sys.dont_write_bytecode = True
+import  os
+from    pathlib import Path
+this=sys.modules[__name__]
 
 
-import types # for SimpleNamespace()
+# permette di fare l'import senza passare le subdirs
+from    Source.lnLib.setPathsLN import setPaths; setPaths(sub_dirs=[
+                                                'Source',
+                                                'Source/lnLib',
+                                                'Source/lnLib/colorama_043',
+                                                'Source/Main',
+                                                ],
+                                                fDEBUG=False)
 
-from LnLib.yamlLoaderLN import loadYamlFile
-from LnLib.loggerLN     import setLogger
-from LnLib.promptLN     import prompt
-from LnLib              import monkeyPathLN # necessario per i miei comandi di Path (tra cui file.sizeRotate())
+
+from  loggerLN                import getLogger
+from  parseInput              import parseInput
+from  configurationLoaderLN   import Main as LoadConfigFile
+# from  resolveDictVarsLN       import ResolveDictVars
 
 
-from Source.parseInputLN import parseInput
-from Source import DeviceList
-from Source import MountUmount
-from Source import DisplayDevice; display=DisplayDevice.display
+from toYaml                    import readYamlFile, writeYamlFile, print_dict
+
+
+# import types # for SimpleNamespace()
+
+# from LnLib.yamlLoaderLN import loadYamlFile
+# from LnLib.loggerLN     import setLogger
+# from LnLib.promptLN     import prompt
+# from LnLib              import monkeyPathLN # necessario per i miei comandi di Path (tra cui file.sizeRotate())
+
+
+# from Source.parseInputLN import parseInput
+import DeviceList
+import DisplayDevice; display=DisplayDevice.display
+# from Source import MountUmount
 
 
 def get_my_dev(config, args, all_devices=False, fPRINT=False):
@@ -40,14 +51,14 @@ def get_my_dev(config, args, all_devices=False, fPRINT=False):
     device_list=DeviceList.deviceList(config, req_mpoint=req_mpoint)
 
     if all_devices:
-        lnLogger.debug('DEVICES found:', device_list)
+        logger.debug('DEVICES found:', device_list)
         if fPRINT:
             for name, _device in device_list.items():
-                display(_device, msg='current status')
+                DisplayDevice.display(_device, msg='current status')
             print()
         return device_list
 
-    lnLogger.info('DEVICE required:', args)
+    logger.info('DEVICE required:', args)
     for name, my_dev in device_list.items():
 
         _device=SimpleNamespace(**my_dev)
@@ -57,11 +68,13 @@ def get_my_dev(config, args, all_devices=False, fPRINT=False):
         args_partuuid=getattr(args, 'partuuid', None)
 
         if name==args_name or _device.uuid==args_uuid or _device.partuuid==args_partuuid:
-            lnLogger.info('DEVICE found:', my_dev)
+            logger.info('DEVICE found:', my_dev)
             return my_dev
 
-    lnLogger.info('NO DEVICE found:')
+    logger.warning('NO DEVICE found:')
     return None
+
+
 
 
 
@@ -70,7 +83,61 @@ def get_my_dev(config, args, all_devices=False, fPRINT=False):
 #
 ######################################
 if __name__ == '__main__':
-    gv=types.SimpleNamespace()
+
+    print('starting....')
+    _this_filepath=Path(sys.argv[0]).resolve()
+    script_path=_this_filepath.parent # ... then up one level
+    prj_name=script_path.stem
+    log_dir=f'/tmp/{prj_name}'
+
+    """ parsing input --------------- """
+    args, log, dbg=parseInput()
+    """ parsing end --------------- """
+
+
+
+
+    """ logger ---------------"""
+    logger=getLogger(   logger_name='pyMount',
+                        configuration_file=Path("conf/logger_config.yaml"),
+                        log_filename=Path(f'{log_dir}/{prj_name}.log'),
+                        console_level=log.console,
+                        exclude_modules=log.exclude,
+                        include_modules=log.include,
+                    )
+
+    """ logger start ----------- """
+    logger.info('application arguments:', vars(args))
+    logger.debug('logging arguments:', log)
+    logger.debug('debugging arguments:', vars(dbg))
+    """ logger end ------------- """
+
+
+
+    ''' read Main configuration file '''
+    logger.info('loading configuration file:', 'conf/main_config.yaml')
+
+    os.environ['script_path']=str(script_path) # potrebbe essere usata nel config_file
+    myConfig=LoadConfigFile(f'conf/{prj_name.lower()}_config.yaml')
+    # print_dict(myConfig)
+
+    # ----
+    if args.action=='list':
+        device_list=get_my_dev(myConfig['UUIDs'], args, all_devices=True, fPRINT=True)
+        sys.exit()
+
+
+
+
+
+    kwargs={
+        'my_logger': logger,
+        'configuration_data': myConfig
+    }
+
+
+    import pdb; pdb.set_trace() # by Loreto
+
 
     prj_dir=Path(sys.argv[0]).resolve().parent
 
@@ -102,19 +169,19 @@ if __name__ == '__main__':
     if inp_log.level: log['level']=inp_log.level
 
 
-    lnLogger = setLogger(log)
+    logger = setLogger(log)
 
-    lnLogger.debug3('input   arguments', args.__dict__)
-    lnLogger.debug3('logging arguments', inp_log)
-    lnLogger.debug3('debug   arguments', dbg.__dict__)
-    lnLogger.debug3('configuration data', dConfig)
+    logger.debug3('input   arguments', args.__dict__)
+    logger.debug3('logging arguments', inp_log)
+    logger.debug3('debug   arguments', dbg.__dict__)
+    logger.debug3('configuration data', dConfig)
     # -------------------------------
-    gv.logger=lnLogger
+    gv.logger=logger
     gv.TAB='   [Ln]: '
 
 
     # ---- inizializzazione di alcuni moduli che utilizzano i global values...
-    _myGlobal={'logger': lnLogger, 'color': LnColor()}
+    _myGlobal={'logger': logger, 'color': LnColor()}
     prompt(gVars=_myGlobal)
     MountUmount.setup(gVars=_myGlobal)
     DisplayDevice.setup(gVars=_myGlobal)

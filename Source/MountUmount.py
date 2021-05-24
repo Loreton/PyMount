@@ -32,7 +32,7 @@ def mount(dev, fEXECUTE=False):
     dev=SimpleNamespace(**dev)
 
     if dev.mounted:
-        msg = f"device {dev.path} mounted: {dev.mountpoint}"
+        msg = f"device {dev.path} already mounted: {dev.mountpoint}"
         logger.info(msg)
         C.pYellowH(text=msg, tab=4)
         return 0

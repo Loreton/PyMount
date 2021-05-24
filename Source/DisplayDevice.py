@@ -5,7 +5,7 @@
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
-# from LnLib.colorLN import LnColor; C=LnColor()
+from colorLN import LnColor; C=LnColor()
 from types import SimpleNamespace
 
 
