@@ -9,24 +9,29 @@ from pathlib import Path
 from types import SimpleNamespace
 import subprocess, shlex
 
-from LnLib.promptLN import prompt
-from LnLib.nameSpaceLN import RecursiveNamespace
-from LnLib.runCommand import runCommand
 
-# ###########################################################################
-# #
-# ###########################################################################
-def setup(gVars={}):
-    if gVars:
-        global C, logger
-        if 'color' in gVars: C=gVars['color']
-        if 'logger' in gVars: logger=gVars['logger']
+from colorLN import LnColor; C=LnColor()
+
+# from LnLib.promptLN import prompt
+# from LnLib.nameSpaceLN import RecursiveNamespace
+from runCommandLN import runCommand
+
+# # ###########################################################################
+# # #
+# # ###########################################################################
+# def setup(gVars={}):
+#     if gVars:
+#         global C, logger
+#         if 'color' in gVars: C=gVars['color']
+#         if 'logger' in gVars: logger=gVars['logger']
 
 
 # ###########################################################################
 # # return: 0 all is OK
 # ###########################################################################
-def mount(dev, fEXECUTE=False):
+def mount(dev, *, my_logger, fEXECUTE=False):
+    global logger
+    logger=my_logger
     assert isinstance(dev, dict)
     logger.info('DEVICE required:', dev)
     dev=SimpleNamespace(**dev)
@@ -37,7 +42,7 @@ def mount(dev, fEXECUTE=False):
         C.pYellowH(text=msg, tab=4)
         return 0
 
-    C.pWhiteH(text="trying to mount disk {dev.path}".format(**locals()), tab=4)
+    C.pWhiteH(text=f"trying to mount disk {dev.path}", tab=4)
     if dev.fstype=='vfat':
         OPTIONS='-o defaults,noauto,relatime,nousers,rw,flush,utf8=1,uid=pi,gid=pi,dmask=002,fmask=113'
     elif dev.fstype=='ntfs':
@@ -45,10 +50,9 @@ def mount(dev, fEXECUTE=False):
     else:
         OPTIONS=''
 
-    mount_cmd="sudo /bin/mount -t {dev.fstype} {OPTIONS} -U {dev.uuid} {dev.mountpoint}".format(**locals())
+    mount_cmd=f"sudo /bin/mount -t {dev.fstype} {OPTIONS} -U {dev.uuid} {dev.mountpoint}"
 
 
-    # import pdb; pdb.set_trace() # by Loreto
     if fEXECUTE:
         C.pYellowH(text=mount_cmd, tab=4)
         check_mp(dev.mountpoint)
@@ -73,7 +77,10 @@ def mount(dev, fEXECUTE=False):
 # ###########################################################################
 # #
 # ###########################################################################
-def umount(dev, fEXECUTE=False):
+def umount(dev, *, my_logger, fEXECUTE=False):
+    global logger
+    logger=my_logger
+
     assert isinstance(dev, dict)
     logger.info('DEVICE required:', dev)
     dev=SimpleNamespace(**dev)

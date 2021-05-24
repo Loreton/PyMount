@@ -1,1 +1,0 @@
-/home/pi/GIT-REPO/Python/LnPyLib/System-LN/runCommand.py

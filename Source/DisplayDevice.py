@@ -13,10 +13,10 @@ from types import SimpleNamespace
 # ###########################################################################
 # # set logger and color
 # ###########################################################################
-def setup(gVars):
-    global C, logger
-    if 'color' in gVars: C=gVars['color']
-    if 'logger' in gVars: logger=gVars['logger']
+# def setup(gVars):
+#     global C, logger
+#     if 'color' in gVars: C=gVars['color']
+#     if 'logger' in gVars: logger=gVars['logger']
 
 #############################################################
 # if sigle_device: just a single device will be displayed.
@@ -39,7 +39,7 @@ def display(device, msg):
 
     mp=_device.mountpoint
 
-    if not _device.mounted and _device.mp_dynamic:
+    if not _device.mounted and _device.dynamic_mp:
         color=C.pYellowH
         status=''' NOT mounted  ---> mp is dynamically calculated.
                     Use --mpoint arg or change config file to specify your own.

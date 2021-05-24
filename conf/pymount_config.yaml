@@ -1,20 +1,20 @@
 # il mointpoint se non definito o nullo viene
 # creato dinamicamente con Label+PARTUUID
-logger:
-    enable: true
-    console: false                      # may be overridden by input arguments
-    filename: /tmp/${env:Prj_Name}.log  # may be overridden at runtime
-    disp_date: true
-    disp_fullpath_module: true
-    disp_time: true
-    level: info                     # may be overridden by input arguments
-    modules: []                     # may be overridden by input arguments
-    rotation_filesize: 10485760
-    rotation_nfiles: 5
+# logger:
+#     enable: true
+#     console: false                      # may be overridden by input arguments
+#     filename: /tmp/${env:Prj_Name}.log  # may be overridden at runtime
+#     disp_date: true
+#     disp_fullpath_module: true
+#     disp_time: true
+#     level: info                     # may be overridden by input arguments
+#     modules: []                     # may be overridden by input arguments
+#     rotation_filesize: 10485760
+#     rotation_nfiles: 5
 
 
 
-UUIDs:
+UUIDS:
     0EBE144A0EBE144A:
         label       : LN1TB_A
         uuid        : 0EBE144A0EBE144A
