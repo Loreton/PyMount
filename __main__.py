@@ -3,7 +3,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Date .........: 2021-05-24
+# Date .........: 2021-05-25
 #
 # #############################################
 
@@ -11,6 +11,8 @@ import  sys; sys.dont_write_bytecode = True
 import  os
 from    pathlib import Path
 this=sys.modules[__name__]
+from types import SimpleNamespace
+
 
 # permette di fare l'import senza passare le subdirs
 from    Source.lnLib.setPathsLN import setPaths; setPaths(sub_dirs=[
@@ -82,6 +84,10 @@ if __name__ == '__main__':
     # print_dict(myConfig)
 
     dev_kwargs={
+        'force': args.force,
+        'execute': dbg.go,
+    }
+    dev_kwargs={
         'name': getattr(args, 'name', None),
         'uuid': getattr(args, 'uuid', None),
         'label': getattr(args, 'label', None),
@@ -100,27 +106,54 @@ if __name__ == '__main__':
         sys.exit()
 
 
+    dev_uuid=my_dev['uuid']
+    cfg_dev=myConfig['UUIDS'].get(dev_uuid)
 
+    # ########### MOUNT
     if args.action=='mount':
         DisplayDevice.display(my_dev, msg=f'current status {args.action}')
-        rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
+        dev=SimpleNamespace(**my_dev)
 
-    elif args.action=='umount':
-        DisplayDevice.display(my_dev, msg=f'current status {args.action}')
-        rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
+        if dev.mounted:
 
-    elif args.action=='remount':
-        DisplayDevice.display(my_dev, msg=f'current status {args.action}')
-        rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
-        if rCode==0:
-            my_dev=DeviceList.getDevice(config=myConfig['UUIDS'], myLogger=logger, **dev_kwargs) # re-read device status
+            if dev.mountpoint==cfg_dev['mountpoint']:
+                msg = f"device {dev.path} is already and correctly mounted on: {dev.mountpoint}"
+                logger.info(msg)
+                C.pYellowH(text=msg, tab=4)
+                # rCode=0
+
+            elif args.force:
+                rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
+                if rCode==0:
+                    my_dev=DeviceList.getDevice(config=myConfig['UUIDS'], myLogger=logger, **dev_kwargs)
+                    rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
+                    my_dev=DeviceList.getDevice(config=myConfig['UUIDS'], myLogger=logger, **dev_kwargs)
+                    DisplayDevice.display(my_dev, msg='status after mount')
+                else:
+                    logger.error("Error mounting device", my_dev, exit=True)
+            else:
+                msg = f"""device {dev.path}
+                is already mounted on: {dev.mountpoint}
+                but it's different from required mountpoint: {cfg_dev["mountpoint"]}
+                use '--force' to modify it"""
+                # C.pRedH(text=msg, tab=4)
+                logger.error(msg, exit=True, console=True)
+
+        else:
             rCode=MountUmount.mount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
 
 
 
-    if rCode==0 and dbg.go:
-        my_dev=DeviceList.getDevice(config=myConfig['UUIDS'], myLogger=logger, **dev_kwargs)
-        DisplayDevice.display(my_dev, msg=f'status after {args.action}')
+    # ########### UMOUNT
+    elif args.action=='umount':
+        DisplayDevice.display(my_dev, msg=f'current status {args.action}')
+        rCode=MountUmount.umount(my_dev, fEXECUTE=dbg.go, my_logger=logger)
+
+
+
+    # if rCode==0 and dbg.go:
+    #     my_dev=DeviceList.getDevice(config=myConfig['UUIDS'], myLogger=logger, **dev_kwargs)
+    #     DisplayDevice.display(my_dev, msg=f'status after {args.action}')
 
     print ()
     print ()

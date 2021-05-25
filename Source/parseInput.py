@@ -62,6 +62,7 @@ def common_options(my_parser):
 
 def devce_options(my_parser):
     my_parser.add_argument('--go', action='store_true', help='execute the command\n\n')
+    my_parser.add_argument('--force', action='store_true', help='force mount or umount operation\n\n')
     _parser=my_parser.add_mutually_exclusive_group(required=True)
     _parser.add_argument('--uuid', help='specify disk UUID', default=None)
     _parser.add_argument('--partuuid', help='specify disk PARTUUID', default=None)
@@ -104,11 +105,11 @@ def mainOptions(parser):
     # umount_group.add_argument('--go', action='store_true', help='execute the command\n\n')
 
     # - remount parser
-    remount_parser=subparsers.add_parser("remount",
-                        formatter_class=argparse.RawTextHelpFormatter,
-                        help="remount process")
-    # remount_parser.add_argument('--go', action='store_true', help='execute the command\n\n')
-    devce_options(remount_parser)
+    # remount_parser=subparsers.add_parser("remount",
+    #                     formatter_class=argparse.RawTextHelpFormatter,
+    #                     help="remount process")
+    # # remount_parser.add_argument('--go', action='store_true', help='execute the command\n\n')
+    # devce_options(remount_parser)
 
     # remount_group=remount_parser.add_mutually_exclusive_group(required=True)
     # remount_group.add_argument('--uuid', help='specify disk UUID', default=None)

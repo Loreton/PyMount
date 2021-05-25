@@ -9,15 +9,6 @@ from colorLN import LnColor; C=LnColor()
 from types import SimpleNamespace
 
 
-
-# ###########################################################################
-# # set logger and color
-# ###########################################################################
-# def setup(gVars):
-#     global C, logger
-#     if 'color' in gVars: C=gVars['color']
-#     if 'logger' in gVars: logger=gVars['logger']
-
 #############################################################
 # if sigle_device: just a single device will be displayed.
 #############################################################

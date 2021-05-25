@@ -11,20 +11,7 @@ import subprocess, shlex
 
 
 from colorLN import LnColor; C=LnColor()
-
-# from LnLib.promptLN import prompt
-# from LnLib.nameSpaceLN import RecursiveNamespace
 from runCommandLN import runCommand
-
-# # ###########################################################################
-# # #
-# # ###########################################################################
-# def setup(gVars={}):
-#     if gVars:
-#         global C, logger
-#         if 'color' in gVars: C=gVars['color']
-#         if 'logger' in gVars: logger=gVars['logger']
-
 
 # ###########################################################################
 # # return: 0 all is OK
@@ -35,12 +22,6 @@ def mount(dev, *, my_logger, fEXECUTE=False):
     assert isinstance(dev, dict)
     logger.info('DEVICE required:', dev)
     dev=SimpleNamespace(**dev)
-
-    if dev.mounted:
-        msg = f"device {dev.path} already mounted: {dev.mountpoint}"
-        logger.info(msg)
-        C.pYellowH(text=msg, tab=4)
-        return 0
 
     C.pWhiteH(text=f"trying to mount disk {dev.path}", tab=4)
     if dev.fstype=='vfat':
