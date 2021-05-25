@@ -19,9 +19,15 @@ def common_options(my_parser):
     my_parser.add_argument('--display-args',
                                 action='store_true',
                                 help='Display input paramenters')
+
     my_parser.add_argument('--debug',
                                 action='store_true',
                                 help='display paths and input args\n\n')
+
+
+    my_parser.add_argument('--no-log',
+                                action='store_true',
+                                help='skip logging\n\n')
 
 
     my_parser.add_argument( "--log-console",
@@ -142,7 +148,7 @@ def post_process(args):
     # _dargs=args.__dict__
     for key in keys:
         val=getattr(args, key)
-        if key in ['log']:
+        if key in ['log', 'null_log', 'no_log']:
             setattr(log, key, val)
         elif key.startswith('log_'):
             setattr(log, key[4:], val)

@@ -63,6 +63,7 @@ if __name__ == '__main__':
     logger=getLogger(   logger_name='pyMount',
                         configuration_file=Path("conf/logger_config.yaml"),
                         log_filename=Path(f'{log_dir}/{prj_name}.log'),
+                        null_log=log.no_log,
                         console_level=log.console,
                         exclude_modules=log.exclude,
                         include_modules=log.include,
