@@ -33,7 +33,7 @@ UUIDS:
         # mountpoint  : /mnt/Loreto32GB-57caf133-01
 
     843671A53671993E:
-        label       : TOS_LnDisk
+        label       : Toshiba_1TB_LnDisk
         uuid        : 843671A53671993E
         partuuid    : 7fcb449d-01
         size        : 708.6G
@@ -42,7 +42,14 @@ UUIDS:
         involved_programs:
             - minidlna           (sudo vi /etc/minidlna.conf)
             - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
-        # mountpoint : /mnt/TOS_LnDisk-7fcb449d-01
+
+    441d4b2e-2e17-451d-8835-485e388f6595:
+        label       : Toshiba_1TB_Ubun
+        uuid        : 441d4b2e-2e17-451d-8835-485e388f6595
+        partuuid    : 7fcb449d-02
+        size        : 222.9G
+        fstype      : ext4
+        mountpoint  : /mnt/Toshiba-1TB_Ubuntu
 
 
     0E4D094B0E4D094B:
@@ -58,11 +65,3 @@ UUIDS:
             # - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
         # mountpoint : /mnt/TOS_LnDisk-7fcb449d-01
 
-
-    441d4b2e-2e17-451d-8835-485e388f6595:
-        label       : TOS_Ubuntu
-        uuid        : 441d4b2e-2e17-451d-8835-485e388f6595
-        partuuid    : 7fcb449d-02
-        size        : 222.9G
-        fstype      : ext4
-        mountpoint  : /mnt/Toshiba-1TB_Ubuntu
