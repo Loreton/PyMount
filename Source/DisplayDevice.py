@@ -5,9 +5,9 @@
 #
 # -----------------------------------------------
 import sys; sys.dont_write_bytecode = True
-from colorLN import LnColor; C=LnColor()
 from types import SimpleNamespace
 
+from lnLib.colorLN import LnColor; C=LnColor()
 
 #############################################################
 # if sigle_device: just a single device will be displayed.

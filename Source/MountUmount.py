@@ -10,8 +10,8 @@ from types import SimpleNamespace
 import subprocess, shlex
 
 
-from colorLN import LnColor; C=LnColor()
-from runCommandLN import runCommand
+from lnLib.colorLN import LnColor; C=LnColor()
+from lnLib.runCommandLN import runCommand
 
 # ###########################################################################
 # # return: 0 all is OK

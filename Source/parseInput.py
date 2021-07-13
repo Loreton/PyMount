@@ -8,7 +8,7 @@
 import sys
 import argparse
 from pathlib import Path
-from colorLN import LnColor; C=LnColor()
+from lnLib.colorLN import LnColor; C=LnColor()
 
 
 
@@ -66,7 +66,7 @@ def common_options(my_parser):
         """)
 
 
-def devce_options(my_parser):
+def device_options(my_parser):
     my_parser.add_argument('--go', action='store_true', help='execute the command\n\n')
     my_parser.add_argument('--force', action='store_true', help='force mount or umount operation\n\n')
     _parser=my_parser.add_mutually_exclusive_group(required=True)
@@ -90,7 +90,7 @@ def mainOptions(parser):
                         formatter_class=argparse.RawTextHelpFormatter,
                         help="mount process")
     # mount_parser.add_argument('--mpoint', help='specify mount point', default=None)
-    devce_options(mount_parser)
+    device_options(mount_parser)
     # mount_group=mount_parser.add_mutually_exclusive_group(required=True)
     # mount_group.add_argument('--uuid', help='specify disk UUID', default=None)
     # mount_group.add_argument('--partuuid', help='specify disk PARTUUID', default=None)
@@ -102,7 +102,7 @@ def mainOptions(parser):
     umount_parser=subparsers.add_parser("umount",
                         formatter_class=argparse.RawTextHelpFormatter,
                         help="umount process")
-    devce_options(umount_parser)
+    device_options(umount_parser)
     # umount_group=umount_parser.add_mutually_exclusive_group(required=True)
     # umount_group.add_argument('--uuid', help='specify disk UUID', default=None)
     # umount_group.add_argument('--partuuid', help='specify disk PARTUUID', default=None)
@@ -115,7 +115,7 @@ def mainOptions(parser):
     #                     formatter_class=argparse.RawTextHelpFormatter,
     #                     help="remount process")
     # # remount_parser.add_argument('--go', action='store_true', help='execute the command\n\n')
-    # devce_options(remount_parser)
+    # device_options(remount_parser)
 
     # remount_group=remount_parser.add_mutually_exclusive_group(required=True)
     # remount_group.add_argument('--uuid', help='specify disk UUID', default=None)

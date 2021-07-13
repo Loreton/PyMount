@@ -21,7 +21,7 @@ UUIDS:
         partuuid    : 00442663-01
         size        : 931.5G
         fstype      : ntfs
-        mountpoint  : /mnt/LN1TB_A
+        mountpoint  : /media/LN1TB_A
 
     1C01-1919:
         label       : LORETO32GB
@@ -29,8 +29,8 @@ UUIDS:
         partuuid    : 57caf133-01
         size        : 29.8G
         fstype      : vfat
-        mountpoint  : /mnt/Loreto32GB
-        # mountpoint  : /mnt/Loreto32GB-57caf133-01
+        mountpoint  : /media/Loreto32GB
+        # mountpoint  : /media/Loreto32GB-57caf133-01
 
     843671A53671993E:
         label       : Toshiba_1TB_LnDisk
@@ -38,7 +38,7 @@ UUIDS:
         partuuid    : 7fcb449d-01
         size        : 708.6G
         fstype      : ntfs
-        mountpoint  : /mnt/Toshiba-1TB_LnDisk
+        mountpoint  : /media/Toshiba-1TB_LnDisk
         involved_programs:
             - minidlna           (sudo vi /etc/minidlna.conf)
             - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
@@ -49,7 +49,7 @@ UUIDS:
         partuuid    : 7fcb449d-02
         size        : 222.9G
         fstype      : ext4
-        mountpoint  : /mnt/Toshiba-1TB_Ubuntu
+        mountpoint  : /media/Toshiba-1TB_Ubuntu
 
 
     0E4D094B0E4D094B:
@@ -59,9 +59,9 @@ UUIDS:
         partuuid    : 42e11593-fea2-11e8-8d90-1c7508f2b04f
         size        : 465.8G
         fstype      : ntfs
-        mountpoint  : /mnt/SeaGate_500GB
+        mountpoint  : /media/SeaGate_500GB
         involved_programs:
             # - minidlna           (sudo vi /etc/minidlna.conf)
             # - moveCameraFiles.sh (vi /home/pi/PiProd/shProc/moveCameraFiles.sh)
-        # mountpoint : /mnt/TOS_LnDisk-7fcb449d-01
+        # mountpoint : /media/TOS_LnDisk-7fcb449d-01
 

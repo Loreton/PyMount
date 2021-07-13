@@ -3,7 +3,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Date .........: 2021-05-25
+# Date .........: 2021-07-13
 #
 # #############################################
 
@@ -15,20 +15,32 @@ from types import SimpleNamespace
 
 
 # permette di fare l'import senza passare le subdirs
-from    Source.lnLib.setPathsLN import setPaths; setPaths(sub_dirs=[
+# from    Source.lnLib.setPathsLN import setPaths; setPaths(sub_dirs=[
+#                                                 'Source',
+#                                                 'Source/lnLib',
+#                                                 'Source/lnLib/colorama_043',
+#                                                 'Source/Main',
+#                                                 ],
+#                                                 fDEBUG=False)
+
+# in caso di file.zip la lnLib.zip viene estratta in area temp e messa nel path per essere utiizzata.
+# questo perché non riesco ad importaremoduli da un zip dentro un altro zip
+from    Source.Main.setPathsLN import setPaths; setPaths(sub_dirs=[
                                                 'Source',
-                                                'Source/lnLib',
-                                                'Source/lnLib/colorama_043',
                                                 'Source/Main',
+                                                # 'Source/lnLib', # used only for building Source/LnLib.zip...
+                                                'Source/lnLib.zip',
                                                 ],
                                                 fDEBUG=False)
 
 
-from  loggerLN                import getLogger
-from  parseInput              import parseInput
-from  configurationLoaderLN   import Main as LoadConfigFile
 
-from colorLN import LnColor; C=LnColor()
+from  lnLib.loggerLN                import getLogger
+from  lnLib.colorLN import LnColor; C=LnColor()
+from  lnLib.configurationLoaderLN   import Main as LoadConfigFile
+
+from  parseInput              import parseInput
+
 import DisplayDevice
 import DeviceList
 import MountUmount
@@ -84,10 +96,10 @@ if __name__ == '__main__':
     myConfig=LoadConfigFile(f'conf/{prj_name.lower()}_config.yaml')
     # print_dict(myConfig)
 
-    dev_kwargs={
-        'force': args.force,
-        'execute': dbg.go,
-    }
+    # dev_kwargs={
+    #     'force': args.force,
+    #     'execute': dbg.go,
+    # }
     dev_kwargs={
         'name': getattr(args, 'name', None),
         'uuid': getattr(args, 'uuid', None),
